@@ -16,8 +16,8 @@ Suite Setup
     ...    ${browser}[2]
     
     Set Selenium Speed    
-    ...    0.3
-
+    ...    0.1
+    
     Maximize Browser Window
     
 Suite Teardown

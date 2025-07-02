@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-07-02T12:40:38.807146" rpa="false" schemaversion="5">
+<suite id="s1" name="Main" source="/Users/sulaimanhashimi/Github/personal/personal/Projects/Selenium/Project_01/main.robot">
+<kw name="Suite Setup" owner="default" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:38.889256" level="INFO">Opening browser 'Safari' to base url 'https://www.saucedemo.com'.</msg>
+<arg>${url}</arg>
+<arg>${browser}[2]</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-02T12:40:38.889073" elapsed="1.678672"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.3</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-07-02T12:40:40.568709" elapsed="0.000603"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-02T12:40:40.569515" elapsed="0.327741"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:38.888692" elapsed="2.009042"/>
+</kw>
+<test id="s1-t1" name="As the user i should be able to naviage the frontpage of the website" line="9">
+<kw name="This means that i should be able to log in" owner="special">
+<kw name="So i will first input the username" owner="log_in">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-07-02T12:40:40.901394" level="INFO">${random_index} = 0</msg>
+<var>${random_index}</var>
+<arg>random.randint(0, len(${username})-1)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-07-02T12:40:40.900664" elapsed="0.001959"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-02T12:40:40.903349" level="INFO">${random_user} = standard_user</msg>
+<var>${random_user}</var>
+<arg>${username}[${random_index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-02T12:40:40.902907" elapsed="0.000597"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:40.905153" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<arg>id=user-name</arg>
+<arg>${random_user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:40.904702" elapsed="1.001614"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:40.900171" elapsed="1.007109"/>
+</kw>
+<kw name="Then i will input the password" owner="log_in">
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:41.909916" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-07-02T12:40:42.530548" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:41.909195" elapsed="0.996463"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:41.908210" elapsed="0.997964"/>
+</kw>
+<kw name="Finally i press the 'log_in' button" owner="log_in">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:42.908111" level="INFO">Clicking element 'id=login-button'.</msg>
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:42.907656" elapsed="0.659682"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:42.906717" elapsed="0.661344"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:40.899528" elapsed="2.668788"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:40.897987" elapsed="2.671145"/>
+</test>
+<test id="s1-t2" name="As the user i should be able to add and remove the products from my cart" line="12">
+<kw name="This means that i should be able to add the following products in my cart" owner="special">
+<kw name="Adding the Sauce Labs Backpack" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:43.573903" level="INFO">Clicking button 'add-to-cart-sauce-labs-backpack'.</msg>
+<arg>add-to-cart-sauce-labs-backpack</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:43.572962" elapsed="1.252534"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:43.572538" elapsed="1.253608"/>
+</kw>
+<kw name="Adding the Sauce Labs Bike Light" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:44.827946" level="INFO">Clicking button 'add-to-cart-sauce-labs-bike-light'.</msg>
+<arg>add-to-cart-sauce-labs-bike-light</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:44.827520" elapsed="1.260101"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:44.826756" elapsed="1.261645"/>
+</kw>
+<kw name="Adding the Sauce Labs Bolt T-Shirt" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:46.090849" level="INFO">Clicking button 'add-to-cart-sauce-labs-bolt-t-shirt'.</msg>
+<arg>add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:46.090271" elapsed="1.262172"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:46.089161" elapsed="1.263918"/>
+</kw>
+<kw name="Adding the Sauce Labs Fleece Jacket" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:47.356222" level="INFO">Clicking button 'add-to-cart-sauce-labs-fleece-jacket'.</msg>
+<arg>add-to-cart-sauce-labs-fleece-jacket</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:47.355688" elapsed="1.253771"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:47.353612" elapsed="1.256634"/>
+</kw>
+<kw name="Adding the Sauce Labs Onesie" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:48.612842" level="INFO">Clicking button 'add-to-cart-sauce-labs-onesie'.</msg>
+<arg>add-to-cart-sauce-labs-onesie</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:48.612056" elapsed="1.261251"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:48.610986" elapsed="1.263639"/>
+</kw>
+<kw name="Adding the Test.allTheThings() T-Shirt (Red)" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:49.876899" level="INFO">Clicking button 'add-to-cart-test.allthethings()-t-shirt-(red)'.</msg>
+<arg>add-to-cart-test.allthethings()-t-shirt-(red)</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:49.876435" elapsed="1.255022"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:49.875675" elapsed="1.256422"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:43.571667" elapsed="7.560609"/>
+</kw>
+<kw name="But also that i should be able to remove the following products in my cart" owner="special">
+<kw name="Removing the Sauce Labs Backpack" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:51.134648" level="INFO">Clicking button 'remove-sauce-labs-backpack'.</msg>
+<arg>remove-sauce-labs-backpack</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:51.134230" elapsed="1.259136"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:51.133868" elapsed="1.260125"/>
+</kw>
+<kw name="Removing the Sauce Labs Bike Light" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:52.395705" level="INFO">Clicking button 'remove-sauce-labs-bike-light'.</msg>
+<arg>remove-sauce-labs-bike-light</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:52.395312" elapsed="1.253691"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:52.394495" elapsed="1.255304"/>
+</kw>
+<kw name="Removing the Sauce Labs Bolt T-Shirt" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:53.652745" level="INFO">Clicking button 'remove-sauce-labs-bolt-t-shirt'.</msg>
+<arg>remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:53.651945" elapsed="1.256575"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:53.650932" elapsed="1.258413"/>
+</kw>
+<kw name="Removing the Sauce Labs Fleece Jacket" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:54.911444" level="INFO">Clicking button 'remove-sauce-labs-fleece-jacket'.</msg>
+<arg>remove-sauce-labs-fleece-jacket</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:54.911033" elapsed="1.262890"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:54.910087" elapsed="1.264716"/>
+</kw>
+<kw name="Removing the Sauce Labs Onesie" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:56.176786" level="INFO">Clicking button 'remove-sauce-labs-onesie'.</msg>
+<arg>remove-sauce-labs-onesie</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:56.176352" elapsed="1.255856"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:56.175578" elapsed="1.257419"/>
+</kw>
+<kw name="Removing the Test.allTheThings() T-Shirt (Red)" owner="products">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-02T12:40:57.435557" level="INFO">Clicking button 'remove-test.allthethings()-t-shirt-(red)'.</msg>
+<arg>remove-test.allthethings()-t-shirt-(red)</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-02T12:40:57.434888" elapsed="1.255699"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:57.433837" elapsed="1.257636"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:51.133205" elapsed="7.558623"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:43.570025" elapsed="15.122544"/>
+</test>
+<kw name="Suite Teardown" owner="default" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-07-02T12:40:58.695493" elapsed="0.533420"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:58.694733" elapsed="0.534448"/>
+</kw>
+<status status="PASS" start="2025-07-02T12:40:38.808965" elapsed="20.420303"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Main" id="s1" pass="2" fail="0" skip="0">Main</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

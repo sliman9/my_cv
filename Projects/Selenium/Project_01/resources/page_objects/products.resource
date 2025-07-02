@@ -32,12 +32,3 @@ Removing the Sauce Labs Onesie
     Click Button    remove-sauce-labs-onesie
 Removing the Test.allTheThings() T-Shirt (Red)
     Click Button    remove-test.allthethings()-t-shirt-(red)
-
-#? --- Prices Products ---
-logging price of the Sauce Labs Backpack
-    Log Element
-logging price of the Sauce Labs Bike Light
-logging price of the Sauce Labs Bolt T-Shirt
-logging price of the Sauce Labs Labs Fleece Jacket
-logging price of the Sauce Labs Onesie
-logging price of the Test.allTheThings() T-Shirt (Red)

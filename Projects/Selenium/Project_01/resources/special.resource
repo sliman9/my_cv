@@ -27,5 +27,4 @@ But also that i should be able to remove the following products in my cart
     Removing the Sauce Labs Onesie
     Removing the Test.allTheThings() T-Shirt (Red)
 
-This means i should get a complete overview of the current prices
     
