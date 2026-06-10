@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sulaiman Hashimi — Test Automation Engineer</title>
+<meta name="description" content="Test Automation Engineer with 4+ years experience building scalable automation frameworks across government and enterprise environments.">
+<style>
+/* ══════════════════════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════════════════════ */
+:root {
+  --bg:#F8F7F5; --bg2:#F0EEE9; --bg3:#E6E3DA;
+  --card:#FFFFFF; --border:#E0DDD5; --border2:#C9C6BC;
+  --text:#0C0C0C; --text2:#252525; --muted:#6A6762; --light:#9E9B96;
+  --accent:#4640E8; --accent2:#7C3AED;
+  --accent-light:#EEEFFE; --accent-mid:#C4CCFC;
+  --green:#059669; --green-light:#D1FAE5;
+  --warm:#F59E0B; --warm-light:#FEF3C7;
+  --red:#EF4444;
+  --grad:linear-gradient(135deg,#4640E8 0%,#7C3AED 100%);
+  --shadow-xs:0 1px 2px rgba(0,0,0,.04);
+  --shadow-sm:0 1px 4px rgba(0,0,0,.05),0 2px 8px rgba(0,0,0,.04);
+  --shadow:0 2px 8px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.05);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.07);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.1),0 24px 64px rgba(0,0,0,.1);
+  --shadow-accent:0 8px 32px rgba(70,64,232,.28);
+  --r:16px;
+}
+/* ══════════════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ══════════════════════════════════════════════════════
+   CURSOR GLOW
+══════════════════════════════════════════════════════ */
+#cglow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(70,64,232,.055) 0%,transparent 65%);transform:translate(-50%,-50%);pointer-events:none;z-index:0;transition:opacity .4s;will-change:left,top;}
+
+/* ══════════════════════════════════════════════════════
+   SCROLL PROGRESS
+══════════════════════════════════════════════════════ */
+#scroll-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--grad);z-index:1000;border-radius:0 2px 2px 0;}
+
+/* ══════════════════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════════════════ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 2.5rem;height:72px;display:flex;align-items:center;justify-content:space-between;transition:all .35s ease;}
+#nav.scrolled{background:rgba(248,247,245,.94);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);height:62px;box-shadow:var(--shadow-xs);}
+.nav-brand{display:flex;align-items:center;gap:.75rem;cursor:pointer;text-decoration:none;}
+.nav-av{width:36px;height:36px;border-radius:50%;overflow:hidden;border:2px solid var(--border);background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:var(--accent);flex-shrink:0;transition:border-color .2s;}
+.nav-av img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.nav-nm{font-size:.88rem;font-weight:700;color:var(--text);letter-spacing:-.01em;}
+.nav-r{display:flex;align-items:center;gap:.4rem;}
+.nav-links{display:flex;align-items:center;gap:.1rem;}
+.nav-link{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.42rem .75rem;border-radius:8px;transition:all .2s;}
+.nav-link:hover,.nav-link.active{background:var(--accent-light);color:var(--accent);}
+.nav-cta{background:var(--text)!important;color:#fff!important;padding:.45rem 1.2rem;border-radius:10px;font-size:.82rem;font-weight:600;transition:all .22s;}
+.nav-cta:hover{background:var(--accent)!important;transform:translateY(-1px);box-shadow:var(--shadow-accent);}
+
+/* Lang switcher */
+.lang-sw{display:flex;gap:.2rem;align-items:center;border-left:1px solid var(--border);padding-left:.6rem;margin-left:.2rem;}
+.lb{background:transparent;border:1.5px solid var(--border);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1;}
+.lb:hover{border-color:var(--accent);background:var(--accent-light);}
+.lb.active{background:var(--accent-light);border-color:var(--accent-mid);}
+.lang-fade{animation:lf .2s ease both;}
+@keyframes lf{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Hamburger */
+.mob-tog{display:none;flex-direction:column;justify-content:space-between;width:26px;height:18px;background:transparent;border:none;cursor:pointer;padding:0;margin-left:.5rem;}
+.mob-tog span{display:block;height:2px;background:var(--text2);border-radius:2px;transition:all .25s;}
+.mob-tog.open span:nth-child(1){transform:rotate(45deg) translate(5px,6px);}
+.mob-tog.open span:nth-child(2){opacity:0;transform:translateX(8px);}
+.mob-tog.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px);}
+
+/* Mobile menu */
+#mob-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(248,247,245,.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:190;padding:1.5rem;box-shadow:var(--shadow-md);transform:translateY(-6px);opacity:0;transition:all .22s ease;}
+#mob-menu.open{display:block;transform:translateY(0);opacity:1;}
+.mob-link{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;font-size:.95rem;font-weight:600;color:var(--text2);text-decoration:none;border-bottom:1px solid var(--border);transition:color .2s;}
+.mob-link:last-of-type{border-bottom:none;}
+.mob-link::after{content:'→';opacity:.3;font-size:.8rem;}
+.mob-link:hover{color:var(--accent);}
+.mob-langs{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);}
+.mob-langs .lb{width:auto;padding:.4rem .85rem;font-size:.82rem;font-weight:600;height:36px;}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════════ */
+#hero{min-height:100vh;display:flex;align-items:center;padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(0,0,0,.07) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:linear-gradient(to bottom,black 50%,transparent 100%);mask-image:linear-gradient(to bottom,black 50%,transparent 100%);}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);animation:drift 15s ease-in-out infinite;}
+.b1{width:800px;height:800px;background:radial-gradient(circle,rgba(70,64,232,.09),transparent);top:-250px;right:-200px;animation-duration:17s;}
+.b2{width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.07),transparent);bottom:-150px;left:-150px;animation-duration:13s;animation-delay:-6s;}
+.b3{width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,.06),transparent);top:35%;left:25%;animation-duration:19s;animation-delay:-9s;}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-40px) scale(1.07)}66%{transform:translate(-30px,45px) scale(.95)}}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:center;position:relative;z-index:1;}
+.hero-avail{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1.5px solid var(--border);padding:.4rem 1rem .4rem .6rem;border-radius:30px;font-size:.75rem;font-weight:600;color:var(--text2);margin-bottom:1.8rem;box-shadow:var(--shadow-sm);animation:sU .6s .05s both;}
+.avail-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-light);animation:ping 2.2s ease infinite;}
+@keyframes ping{0%,100%{box-shadow:0 0 0 3px var(--green-light)}50%{box-shadow:0 0 0 7px rgba(5,150,105,.08)}}
+.hero-name{font-size:clamp(3.2rem,6.5vw,5.2rem);font-weight:900;letter-spacing:-3px;line-height:1;margin-bottom:.5rem;animation:sU .6s .1s both;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-role{font-size:clamp(1.05rem,2vw,1.25rem);font-weight:500;color:var(--muted);margin-bottom:1.4rem;min-height:1.8rem;animation:sU .6s .15s both;}
+.cursor-blink{display:inline-block;width:2px;height:1.1em;background:var(--accent);vertical-align:middle;margin-left:2px;animation:blink .9s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-bio{font-size:1rem;color:var(--muted);line-height:1.85;max-width:480px;margin-bottom:2.2rem;animation:sU .6s .2s both;}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.8rem;animation:sU .6s .25s both;}
+.btn-primary{background:var(--text);color:#fff;padding:.78rem 1.85rem;border-radius:12px;font-size:.9rem;font-weight:700;text-decoration:none;transition:all .25s cubic-bezier(.25,1,.5,1);border:none;cursor:pointer;display:inline-block;letter-spacing:-.01em;}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-accent);}
+.btn-outline{background:transparent;color:var(--text2);padding:.75rem 1.85rem;border-radius:12px;font-size:.9rem;font-weight:600;text-decoration:none;border:2px solid var(--border2);transition:all .25s;display:inline-block;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;animation:sU .6s .3s both;}
+.meta-it{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--muted);font-weight:500;}
+@keyframes sU{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* Photo */
+.hero-photo-wrap{position:relative;width:340px;height:420px;animation:sU .7s .15s both;}
+.photo-deco{position:absolute;border-radius:24px;}
+.deco-a{inset:0;background:linear-gradient(145deg,var(--accent-light),var(--warm-light));transform:rotate(5deg);border:1px solid var(--accent-mid);}
+.deco-b{inset:0;background:linear-gradient(145deg,var(--warm-light),var(--accent-light));transform:rotate(-2.5deg);opacity:.65;}
+.photo-frame{position:relative;width:100%;height:100%;border-radius:20px;overflow:hidden;background:var(--bg2);box-shadow:var(--shadow-lg);}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.photo-ini{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;}
+.photo-ini .ini{width:90px;height:90px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:var(--accent);}
+.photo-ini p{font-size:.8rem;color:var(--light);}
+.float-badge{position:absolute;display:flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border:1.5px solid var(--border);padding:.35rem .8rem;border-radius:30px;font-size:.74rem;font-weight:600;color:var(--text2);box-shadow:var(--shadow);white-space:nowrap;z-index:10;}
+.fb1{top:-14px;left:24px;animation:f1 4s ease-in-out infinite;}
+.fb2{top:22%;left:-80px;animation:f2 5s ease-in-out infinite;}
+.fb3{top:12%;right:-80px;animation:f3 4.5s ease-in-out infinite;}
+.fb4{bottom:22%;right:-85px;animation:f1 5.5s ease-in-out infinite .5s;}
+.fb5{bottom:-14px;right:28px;animation:f2 4s ease-in-out infinite 1s;}
+@keyframes f1{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes f2{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-7px) translateX(4px)}}
+@keyframes f3{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+.peb{position:absolute;bottom:-18px;left:-18px;background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:.75rem 1.1rem;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:.7rem;z-index:10;}
+.peb-ico{width:38px;height:38px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.peb-n{font-size:1.15rem;font-weight:800;color:var(--text);line-height:1;}
+.peb-l{font-size:.67rem;color:var(--muted);}
+
+/* ══════════════════════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════════════════════ */
+#marquee{background:var(--text);padding:.9rem 0;overflow:hidden;position:relative;}
+#marquee::before,#marquee::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;}
+#marquee::before{left:0;background:linear-gradient(to right,var(--text),transparent);}
+#marquee::after{right:0;background:linear-gradient(to left,var(--text),transparent);}
+.mq-track{display:flex;}
+.mq-inner{display:flex;align-items:center;gap:2.2rem;animation:mq 28s linear infinite;flex-shrink:0;}
+.mq-item{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.5px;white-space:nowrap;}
+.mq-sep{color:rgba(255,255,255,.18);font-size:.5rem;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════════════════════
+   STATS
+══════════════════════════════════════════════════════ */
+#stats{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1100px;margin:0 auto;padding:0 2.5rem;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{padding:2.5rem 1.5rem;text-align:center;border-right:1px solid var(--border);position:relative;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-size:2.8rem;font-weight:900;letter-spacing:-2.5px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.4rem;}
+.stat-lbl{font-size:.7rem;font-weight:600;color:var(--light);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* ══════════════════════════════════════════════════════
+   SHARED SECTION
+══════════════════════════════════════════════════════ */
+.section-inner{max-width:1100px;margin:0 auto;padding:6rem 2.5rem;}
+.section-eyebrow{display:inline-block;font-size:.68rem;font-weight:700;color:var(--accent);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:.6rem;}
+.section-title{font-size:clamp(2rem,3.5vw,2.7rem);font-weight:800;color:var(--text);letter-spacing:-1.5px;margin-bottom:3.5rem;line-height:1.15;}
+
+/* ══════════════════════════════════════════════════════
+   SERVICES
+══════════════════════════════════════════════════════ */
+#services{background:var(--bg);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:2.2rem;box-shadow:var(--shadow-sm);transition:all .35s cubic-bezier(.25,1,.5,1);cursor:default;position:relative;overflow:hidden;}
+.svc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md);border-color:var(--border2);}
+.svc-ico{width:52px;height:52px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.4rem;transition:all .35s;}
+.svc-card:hover .svc-ico{background:var(--grad);box-shadow:var(--shadow-accent);transform:scale(1.05);}
+.svc-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.6rem;}
+.svc-desc{font-size:.85rem;color:var(--muted);line-height:1.75;}
+
+/* ══════════════════════════════════════════════════════
+   SKILLS
+══════════════════════════════════════════════════════ */
+#skills{background:var(--bg2);}
+.skills-layout{display:grid;grid-template-columns:1fr 270px;gap:3.5rem;align-items:start;}
+.skills-tabs{display:flex;gap:.3rem;margin-bottom:2rem;background:var(--bg3);padding:.3rem;border-radius:12px;width:fit-content;}
+.tab-btn{background:transparent;border:none;color:var(--muted);padding:.45rem 1.1rem;border-radius:9px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.tab-btn.active{background:var(--card);color:var(--accent);box-shadow:var(--shadow-sm);}
+.skills-panel{display:none;}.skills-panel.active{display:block;}
+.skill-bars{display:flex;flex-direction:column;gap:1.2rem;}
+.sk-info{display:flex;justify-content:space-between;margin-bottom:.4rem;}
+.sk-name{font-size:.84rem;font-weight:600;color:var(--text2);}
+.sk-pct{font-size:.75rem;font-weight:700;color:var(--accent);}
+.skill-track{height:6px;background:var(--bg3);border-radius:4px;overflow:hidden;}
+.skill-fill{height:100%;border-radius:4px;background:var(--grad);width:0;transition:width 1.1s cubic-bezier(.34,1.56,.64,1);}
+.radar-wrap{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1.6rem;box-shadow:var(--shadow);text-align:center;}
+.radar-title{font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;}
+#radar-svg{width:100%;max-width:240px;height:240px;}
+.pills-wrap{margin-top:3rem;}
+.pills-lbl{font-size:.68rem;font-weight:700;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.9rem;}
+.tool-cloud{display:flex;flex-wrap:wrap;gap:.45rem;}
+.pill{background:var(--card);border:1.5px solid var(--border);color:var(--text2);font-size:.76rem;font-weight:500;padding:.3rem .75rem;border-radius:30px;transition:all .2s;cursor:default;}
+.pill:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(70,64,232,.1);}
+.pill.hl{background:var(--accent-light);border-color:var(--accent-mid);color:var(--accent);font-weight:700;}
+
+/* ══════════════════════════════════════════════════════
+   EXPERIENCE
+══════════════════════════════════════════════════════ */
+#experience{background:var(--bg);}
+.tl{position:relative;padding-left:3rem;}
+.tl-track{position:absolute;left:10px;top:12px;bottom:0;width:1.5px;background:linear-gradient(to bottom,var(--accent),transparent);}
+.tl-item{position:relative;margin-bottom:2.2rem;opacity:0;transform:translateY(24px);transition:all .55s cubic-bezier(.25,1,.5,1);}
+.tl-item.vis{opacity:1;transform:translateY(0);}
+.tl-dot{position:absolute;left:-44px;top:10px;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:var(--bg);transition:all .25s;}
+.tl-dot.cur{background:var(--accent);box-shadow:0 0 0 5px var(--accent-light);}
+.tl-item:hover .tl-dot{transform:scale(1.4);}
+.exp-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:2rem;box-shadow:var(--shadow);transition:all .3s cubic-bezier(.25,1,.5,1);transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden;}
+.exp-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad);opacity:0;transition:opacity .3s;}
+.exp-card:hover{box-shadow:var(--shadow-md);border-color:var(--border2);}
+.exp-card:hover::after{opacity:1;}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:.65rem;}
+.exp-title{font-size:1.05rem;font-weight:700;color:var(--text);}
+.exp-co{font-size:.88rem;font-weight:600;color:var(--accent);margin-top:.15rem;}
+.exp-badge{font-size:.7rem;font-weight:700;padding:.3rem .85rem;border-radius:30px;background:var(--bg2);color:var(--muted);border:1px solid var(--border);white-space:nowrap;}
+.exp-badge.cur{background:var(--green-light);color:var(--green);border-color:rgba(5,150,105,.25);}
+.exp-desc{font-size:.85rem;color:var(--muted);line-height:1.85;margin:.7rem 0 1rem;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.35rem;}
+.exp-tag{font-size:.7rem;font-weight:500;padding:.2rem .6rem;border-radius:6px;background:var(--bg2);color:var(--text2);border:1px solid var(--border);}
+
+/* ══════════════════════════════════════════════════════
+   CERTIFICATIONS
+══════════════════════════════════════════════════════ */
+#certifications{background:var(--bg2);}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;}
+.cert-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1.3rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;box-shadow:var(--shadow-sm);opacity:0;transform:translateY(16px);transition:opacity .4s,transform .4s,box-shadow .25s,border-color .25s;}
+.cert-card.vis{opacity:1;transform:translateY(0);}
+.cert-card:hover{box-shadow:var(--shadow-md);border-color:var(--accent-mid);transform:translateY(-3px);}
+.cert-ico{width:40px;height:40px;border-radius:12px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.cert-name{font-size:.85rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:.2rem;}
+.cert-meta{font-size:.72rem;color:var(--muted);}
+.cert-yr{margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);background:var(--accent-light);padding:.15rem .55rem;border-radius:7px;border:1px solid var(--accent-mid);white-space:nowrap;height:fit-content;flex-shrink:0;}
+
+/* ══════════════════════════════════════════════════════
+   EDUCATION
+══════════════════════════════════════════════════════ */
+#education{background:var(--bg);}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.3rem;}
+.edu-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:2rem;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:all .3s cubic-bezier(.25,1,.5,1);}
+.edu-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:var(--border2);}
+.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);}
+.edu-degree{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.35rem;}
+.edu-school{color:var(--accent);font-size:.88rem;font-weight:600;margin-bottom:.6rem;}
+.edu-period{font-size:.78rem;color:var(--muted);font-weight:500;}
+
+/* ══════════════════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════════════════ */
+#contact{background:var(--bg2);}
+.contact-hero{text-align:center;max-width:540px;margin:0 auto 2rem;}
+.contact-hero p{color:var(--muted);margin-top:.5rem;font-size:.95rem;line-height:1.7;}
+.contact-cta{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
+.contact-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1.6rem;text-align:center;box-shadow:var(--shadow);text-decoration:none;display:block;transition:all .3s cubic-bezier(.25,1,.5,1);}
+.contact-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.cc-icon{font-size:1.6rem;margin-bottom:.6rem;}
+.cc-label{font-size:.62rem;font-weight:700;color:var(--light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.3rem;}
+.cc-val{font-size:.82rem;font-weight:600;color:var(--text2);word-break:break-all;}
+
+/* ══════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════ */
+footer{background:var(--text);color:rgba(255,255,255,.4);text-align:center;padding:2.5rem;font-size:.82rem;}
+footer .f-name{color:rgba(255,255,255,.85);font-weight:700;}
+
+/* ══════════════════════════════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════════════════════════════ */
+.rev{opacity:0;transform:translateY(20px);filter:blur(4px);transition:opacity .6s ease,transform .6s ease,filter .6s ease;}
+.rev.vis{opacity:1;transform:translateY(0);filter:blur(0);}
+.rev-d1{transition-delay:.08s;}.rev-d2{transition-delay:.16s;}.rev-d3{transition-delay:.24s;}.rev-d4{transition-delay:.32s;}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem;text-align:center;}
+  .hero-photo-wrap{width:240px;height:300px;margin:0 auto;}
+  .hero-bio{margin:0 auto 2rem;}
+  .hero-actions,.hero-meta{justify-content:center;}
+  .fb2,.fb4{display:none;}
+  .skills-layout{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .stat-item:nth-child(2){border-right:none;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  #nav{padding:0 1.2rem;}
+  #nav .nav-links,.lang-sw{display:none;}
+  .mob-tog{display:flex;}
+  .section-inner{padding:4rem 1.2rem;}
+  .tl{padding-left:2rem;}
+  .tl-dot{left:-30px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .hero-inner{gap:2.5rem;}
+  .hero-photo-wrap{width:200px;height:250px;}
+  .fb1,.fb3,.fb5{display:none;}
+  .certs-grid{grid-template-columns:1fr;}
+  .edu-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr 1fr;}
+  .exp-top{flex-direction:column;gap:.4rem;}
+  .section-title{font-size:1.8rem;}
+  .hero-name{letter-spacing:-2px;}
+}
+</style>
+</head>
+<body>
+
+<div id="cglow" aria-hidden="true"></div>
+<div id="scroll-bar" aria-hidden="true"></div>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<nav id="nav" data-cy="nav">
+  <a class="nav-brand" id="nav-brand" href="#hero" data-cy="nav-brand">
+    <div class="nav-av" id="nav-av"></div>
+    <span class="nav-nm" id="nav-nm"></span>
+  </a>
+  <div class="nav-r">
+    <div class="nav-links" id="nav-links" data-cy="nav-links"></div>
+    <div class="lang-sw" id="lang-sw" data-cy="lang-switcher">
+      <button class="lb" data-lang="en" data-cy="lang-btn-en" onclick="setLang('en')" title="English">🇬🇧</button>
+      <button class="lb" data-lang="nl" data-cy="lang-btn-nl" onclick="setLang('nl')" title="Nederlands">🇳🇱</button>
+      <button class="lb" data-lang="es" data-cy="lang-btn-es" onclick="setLang('es')" title="Español">🇪🇸</button>
+      <button class="lb" data-lang="fr" data-cy="lang-btn-fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+      <button class="lb" data-lang="de" data-cy="lang-btn-de" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
+    </div>
+    <button class="mob-tog" id="mob-tog" data-cy="mob-toggle" onclick="toggleMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mob-menu" data-cy="mob-menu">
+  <div id="mob-nav-links"></div>
+  <div class="mob-langs">
+    <button class="lb" data-lang="en" data-cy="mob-lang-btn-en" onclick="setLang('en');closeMob()">🇬🇧 EN</button>
+    <button class="lb" data-lang="nl" data-cy="mob-lang-btn-nl" onclick="setLang('nl');closeMob()">🇳🇱 NL</button>
+    <button class="lb" data-lang="es" data-cy="mob-lang-btn-es" onclick="setLang('es');closeMob()">🇪🇸 ES</button>
+    <button class="lb" data-lang="fr" data-cy="mob-lang-btn-fr" onclick="setLang('fr');closeMob()">🇫🇷 FR</button>
+    <button class="lb" data-lang="de" data-cy="mob-lang-btn-de" onclick="setLang('de');closeMob()">🇩🇪 DE</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section id="hero" data-cy="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  </div>
+  <div class="hero-inner" id="hero-content"></div>
+</section>
+
+<!-- ═══════════════════ MARQUEE ═══════════════════ -->
+<div id="marquee" data-cy="marquee" aria-hidden="true">
+  <div class="mq-track"><div class="mq-inner" id="mq-inner"></div></div>
+</div>
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<section id="stats" data-cy="stats">
+  <div class="stats-inner" id="stats-content"></div>
+</section>
+
+<!-- ═══════════════════ SERVICES ═══════════════════ -->
+<section id="services" data-cy="services">
+  <div class="section-inner">
+    <div id="svc-header"></div>
+    <div class="svc-grid" id="svc-content"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
+<section id="skills" data-cy="skills">
+  <div class="section-inner">
+    <div id="skills-header"></div>
+    <div class="skills-layout">
+      <div>
+        <div id="skills-bars" data-cy="skills-tabs-wrap"></div>
+        <div id="pills-area" data-cy="skills-pills"></div>
+      </div>
+      <div>
+        <div class="radar-wrap rev">
+          <div class="radar-title" id="radar-title-el"></div>
+          <svg id="radar-svg" viewBox="0 0 240 240" data-cy="radar-chart"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+<section id="experience" data-cy="experience">
+  <div class="section-inner">
+    <div id="exp-header"></div>
+    <div class="tl" id="tl-wrap" data-cy="exp-timeline">
+      <div class="tl-track" aria-hidden="true"></div>
+      <div id="exp-content"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CERTIFICATIONS ═══════════════════ -->
+<section id="certifications" data-cy="certifications">
+  <div class="section-inner">
+    <div id="certs-header"></div>
+    <div class="certs-grid" id="certs-content" data-cy="cert-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EDUCATION ═══════════════════ -->
+<section id="education" data-cy="education">
+  <div class="section-inner">
+    <div id="edu-header"></div>
+    <div class="edu-grid" id="edu-content" data-cy="edu-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section id="contact" data-cy="contact">
+  <div class="section-inner" id="contact-content"></div>
+</section>
+
+<footer id="footer-el" data-cy="footer"></footer>
+
+<script>
+'use strict';
+
+// ══════════════════════════════════════════════════════
+// TRANSLATIONS (UI labels only — content is in cv.json)
+// ══════════════════════════════════════════════════════
+const T = {
+  en:{flag:'🇬🇧',
+    nav:{whatIDo:'What I Do',skills:'Skills',experience:'Experience',certs:'Certs',education:'Education',contact:'Contact'},
+    hero:{viewWork:'View My Work',getInTouch:'Get in Touch',openToRoles:'Open to roles'},
+    eyebrows:{whatIDo:'What I Do',skills:'Expertise',experience:'Career',certs:'Credentials',education:'Background',contact:"Let's Connect"},
+    titles:{whatIDo:'How I Help Teams Ship Better',skills:'Technical Skills',experience:'Work Experience',certs:'Certifications',education:'Education',contact:'Get in Touch'},
+    contact:{desc:'Open to new projects, freelance work, and full-time opportunities.',sendEmail:'✉️ Send an Email',callMe:'📱 Call Me',email:'Email',phone:'Phone',location:'Location',company:'Company'},
+    skills:{tabAuto:'Test Automation',tabLang:'Languages',tabTools:'Tools',stackLabel:'Full Tech Stack',radarTitle:'Skill Overview'},
+    footer:(n,l)=>`© ${new Date().getFullYear()} ${n} — Test Automation Engineer — ${l}`},
+  nl:{flag:'🇳🇱',
+    nav:{whatIDo:'Wat ik doe',skills:'Vaardigheden',experience:'Ervaring',certs:'Certificaten',education:'Opleiding',contact:'Contact'},
+    hero:{viewWork:'Bekijk mijn werk',getInTouch:'Neem contact op',openToRoles:'Open voor rollen'},
+    eyebrows:{whatIDo:'Wat ik doe',skills:'Expertise',experience:'Carrière',certs:'Certificeringen',education:'Achtergrond',contact:'Verbinding'},
+    titles:{whatIDo:'Hoe ik teams help beter te leveren',skills:'Technische Vaardigheden',experience:'Werkervaring',certs:'Certificeringen',education:'Opleiding',contact:'Neem contact op'},
+    contact:{desc:'Open voor nieuwe projecten, freelancewerk en fulltime mogelijkheden.',sendEmail:'✉️ Stuur een e-mail',callMe:'📱 Bel mij',email:'E-mail',phone:'Telefoon',location:'Locatie',company:'Bedrijf'},
+    skills:{tabAuto:'Testautomatisering',tabLang:'Talen',tabTools:'Tools',stackLabel:'Volledige Techstack',radarTitle:'Vaardigheidenoverzicht'},
+    footer:(n,l)=>`© ${new Date().getFullYear()} ${n} — Test Automatisering Engineer — ${l}`},
+  es:{flag:'🇪🇸',
+    nav:{whatIDo:'Lo que hago',skills:'Habilidades',experience:'Experiencia',certs:'Certificados',education:'Educación',contact:'Contacto'},
+    hero:{viewWork:'Ver mi trabajo',getInTouch:'Contáctame',openToRoles:'Abierto a oportunidades'},
+    eyebrows:{whatIDo:'Lo que hago',skills:'Experiencia',experience:'Carrera',certs:'Credenciales',education:'Formación',contact:'Conectar'},
+    titles:{whatIDo:'Cómo ayudo a los equipos a entregar mejor',skills:'Habilidades Técnicas',experience:'Experiencia Laboral',certs:'Certificaciones',education:'Educación',contact:'Contacto'},
+    contact:{desc:'Abierto a nuevos proyectos, trabajo freelance y oportunidades a tiempo completo.',sendEmail:'✉️ Enviar email',callMe:'📱 Llamarme',email:'Email',phone:'Teléfono',location:'Ubicación',company:'Empresa'},
+    skills:{tabAuto:'Automatización',tabLang:'Lenguajes',tabTools:'Herramientas',stackLabel:'Stack Tecnológico',radarTitle:'Visión de Habilidades'},
+    footer:(n,l)=>`© ${new Date().getFullYear()} ${n} — Ingeniero de Automatización — ${l}`},
+  fr:{flag:'🇫🇷',
+    nav:{whatIDo:'Ce que je fais',skills:'Compétences',experience:'Expérience',certs:'Certificats',education:'Formation',contact:'Contact'},
+    hero:{viewWork:'Voir mon travail',getInTouch:'Me contacter',openToRoles:'Ouvert aux opportunités'},
+    eyebrows:{whatIDo:'Ce que je fais',skills:'Expertise',experience:'Carrière',certs:'Accréditations',education:'Formation',contact:'Me Joindre'},
+    titles:{whatIDo:"Comment j'aide les équipes à mieux livrer",skills:'Compétences Techniques',experience:'Expérience Professionnelle',certs:'Certifications',education:'Formation',contact:'Me Contacter'},
+    contact:{desc:"Ouvert aux nouveaux projets, au travail freelance et aux opportunités à temps plein.",sendEmail:'✉️ Envoyer un email',callMe:'📱 Appeler',email:'Email',phone:'Téléphone',location:'Localisation',company:'Entreprise'},
+    skills:{tabAuto:'Automatisation',tabLang:'Langages',tabTools:'Outils',stackLabel:'Stack Technique',radarTitle:'Vue des Compétences'},
+    footer:(n,l)=>`© ${new Date().getFullYear()} ${n} — Ingénieur Automatisation — ${l}`},
+  de:{flag:'🇩🇪',
+    nav:{whatIDo:'Was ich tue',skills:'Fähigkeiten',experience:'Erfahrung',certs:'Zertifikate',education:'Ausbildung',contact:'Kontakt'},
+    hero:{viewWork:'Meine Arbeit ansehen',getInTouch:'Kontakt aufnehmen',openToRoles:'Offen für Stellen'},
+    eyebrows:{whatIDo:'Was ich tue',skills:'Expertise',experience:'Karriere',certs:'Nachweise',education:'Hintergrund',contact:'Verbinden'},
+    titles:{whatIDo:'Wie ich Teams helfe, besser zu liefern',skills:'Technische Fähigkeiten',experience:'Berufserfahrung',certs:'Zertifizierungen',education:'Ausbildung',contact:'Kontakt aufnehmen'},
+    contact:{desc:'Offen für neue Projekte, Freiberuflichkeit und Vollzeitpositionen.',sendEmail:'✉️ E-Mail senden',callMe:'📱 Anrufen',email:'E-Mail',phone:'Telefon',location:'Standort',company:'Unternehmen'},
+    skills:{tabAuto:'Testautomatisierung',tabLang:'Sprachen',tabTools:'Werkzeuge',stackLabel:'Technologie-Stack',radarTitle:'Fähigkeitsübersicht'},
+    footer:(n,l)=>`© ${new Date().getFullYear()} ${n} — Test-Automatisierungsingenieur — ${l}`}
+};
+
+// ══════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════
+const LK = 'cvLang_v1';
+let lang = localStorage.getItem(LK) || 'en';
+let D = {};
+
+// ══════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function tr(path){ const keys=path.split('.');let obj=T[lang]||T.en;for(const k of keys){obj=obj?.[k];if(obj===undefined){let fb=T.en;for(const fk of keys)fb=fb?.[fk];return fb||path;}}return obj; }
+function lc(field){ if(lang==='en')return D.personal?.[field]||'';const i18n=D.i18n?.[lang];return i18n?.[field]||D.personal?.[field]||''; }
+function lsvc(){ if(lang==='en')return D.services||[];const svcs=D.i18n?.[lang]?.services;return(svcs&&svcs.length)?svcs:D.services||[]; }
+function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+
+// ══════════════════════════════════════════════════════
+// DATA LOADING
+// ══════════════════════════════════════════════════════
+async function fetchData(){
+  try{
+    const r = await fetch('data/cv.json');
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    D = await r.json();
+    renderAll();
+    initCountUp();
+    initRev();
+  }catch(e){
+    document.querySelector('section#hero .hero-inner')?.remove();
+    document.getElementById('hero').innerHTML = `
+      <div style="max-width:600px;margin:auto;padding:3rem 2rem;text-align:center;position:relative;z-index:1">
+        <div style="font-size:2.5rem;margin-bottom:1rem">⚠️</div>
+        <h2 style="font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:.75rem">Could not load cv.json</h2>
+        <p style="color:var(--muted);margin-bottom:1.5rem;line-height:1.7">Open a local dev server to run this site — direct file:// access blocks fetch().</p>
+        <code style="background:var(--bg2);border:1px solid var(--border);padding:.5rem 1rem;border-radius:8px;font-size:.9rem;display:block;margin-bottom:.5rem">npx serve .</code>
+        <p style="font-size:.8rem;color:var(--light)">Then open http://localhost:3000</p>
+      </div>`;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// LANGUAGE
+// ══════════════════════════════════════════════════════
+function setLang(l){
+  lang = l;
+  localStorage.setItem(LK, l);
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  document.documentElement.lang = l;
+  document.querySelectorAll('section,footer').forEach(el=>{el.style.transition='opacity .15s';el.style.opacity='0';});
+  setTimeout(()=>{
+    renderAll();
+    document.querySelectorAll('section,footer').forEach(el=>{el.style.opacity='1';});
+    setTimeout(()=>document.querySelectorAll('section,footer').forEach(el=>{el.style.transition='';}),200);
+  },150);
+}
+
+// ══════════════════════════════════════════════════════
+// RENDER FUNCTIONS
+// ══════════════════════════════════════════════════════
+function renderAll(){
+  renderNav(); renderHero(); renderMarquee(); renderStats();
+  renderServices(); renderSkills(); renderExperience();
+  renderCerts(); renderEducation(); renderContact();
+}
+
+function renderNav(){
+  const p = D.personal||{};
+  const ini = (p.name||'SH').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const av = document.getElementById('nav-av');
+  if(av) av.innerHTML = D.profilePhoto
+    ? `<img src="${esc(D.profilePhoto)}" alt="" onerror="this.parentNode.innerHTML='<span>${ini}</span>'">`
+    : `<span>${ini}</span>`;
+  const nm = document.getElementById('nav-nm');
+  if(nm) nm.textContent = (p.name||'').split(' ')[0];
+  const tNav = tr('nav');
+  document.getElementById('nav-links').innerHTML = `
+    <a class="nav-link" href="#services" data-cy="nav-link-services">${esc(tNav.whatIDo)}</a>
+    <a class="nav-link" href="#skills" data-cy="nav-link-skills">${esc(tNav.skills)}</a>
+    <a class="nav-link" href="#experience" data-cy="nav-link-experience">${esc(tNav.experience)}</a>
+    <a class="nav-link" href="#certifications" data-cy="nav-link-certifications">${esc(tNav.certs)}</a>
+    <a class="nav-link" href="#education" data-cy="nav-link-education">${esc(tNav.education)}</a>
+    <a class="nav-link nav-cta" href="#contact" data-cy="nav-cta">${esc(tNav.contact)}</a>`;
+  const mob = document.getElementById('mob-nav-links');
+  if(mob) mob.innerHTML = `
+    <a class="mob-link" href="#services" data-cy="mob-link-services" onclick="closeMob()">${esc(tNav.whatIDo)}</a>
+    <a class="mob-link" href="#skills" data-cy="mob-link-skills" onclick="closeMob()">${esc(tNav.skills)}</a>
+    <a class="mob-link" href="#experience" data-cy="mob-link-experience" onclick="closeMob()">${esc(tNav.experience)}</a>
+    <a class="mob-link" href="#certifications" data-cy="mob-link-certifications" onclick="closeMob()">${esc(tNav.certs)}</a>
+    <a class="mob-link" href="#education" data-cy="mob-link-education" onclick="closeMob()">${esc(tNav.education)}</a>
+    <a class="mob-link" href="#contact" data-cy="mob-link-contact" onclick="closeMob()">${esc(tNav.contact)}</a>`;
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+}
+
+function renderHero(){
+  const p = D.personal||{};
+  const ini = (p.name||'SH').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const firstName = (p.name||'').split(' ')[0];
+  const lastName  = (p.name||'').split(' ').slice(1).join(' ');
+  const h = tr('hero');
+  const photoHtml = D.profilePhoto
+    ? `<img src="${esc(D.profilePhoto)}" alt="${esc(p.name)}" data-cy="hero-photo-img"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+    + `<div class="photo-ini" style="display:none"><div class="ini">${ini}</div></div>`
+    : `<div class="photo-ini"><div class="ini">${ini}</div><p>Add assets/photo.jpg</p></div>`;
+  document.getElementById('hero-content').innerHTML = `
+    <div class="hero-left">
+      <div class="hero-avail" data-cy="hero-badge">
+        <span class="avail-dot"></span>${esc(lc('badge'))}
+      </div>
+      <h1 class="hero-name" data-cy="hero-name">
+        ${esc(firstName)}<br><span class="grad-text">${esc(lastName)}</span>
+      </h1>
+      <div class="hero-role" id="typed-role" data-cy="hero-role"></div>
+      <p class="hero-bio" data-cy="hero-bio">${esc(lc('bio'))}</p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn-primary" data-cy="hero-cta-primary">${esc(h.viewWork)}</a>
+        <a href="mailto:${esc(p.email)}" class="btn-outline" data-cy="hero-cta-secondary">${esc(h.getInTouch)}</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-it" data-cy="hero-location"><span>📍</span>${esc(p.location)}</div>
+        <div class="meta-it" data-cy="hero-company"><span>🏢</span>${esc(p.company)}</div>
+        <div class="meta-it"><span>✅</span>${esc(h.openToRoles)}</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrap" data-cy="hero-photo">
+        <div class="photo-deco deco-a" aria-hidden="true"></div>
+        <div class="photo-deco deco-b" aria-hidden="true"></div>
+        <div class="photo-frame">${photoHtml}</div>
+        <div class="float-badge fb1">🐍 Python</div>
+        <div class="float-badge fb2">🎭 Playwright</div>
+        <div class="float-badge fb3">🌐 Selenium</div>
+        <div class="float-badge fb4">⚡ CI/CD</div>
+        <div class="float-badge fb5">🤖 Robot Framework</div>
+        <div class="peb">
+          <div class="peb-ico">🏆</div>
+          <div>
+            <div class="peb-n" data-cy="hero-cert-count">0</div>
+            <div class="peb-l">Certifications</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  typeRole(lc('role'));
+  animCount(document.querySelector('.peb-n'), (D.certifications||[]).length, '', 800);
+}
+
+function renderMarquee(){
+  const items = (D.pills||'').split(',').map(x=>x.trim()).filter(Boolean);
+  if(!items.length) return;
+  const inner = document.getElementById('mq-inner');
+  if(!inner) return;
+  const half = items.map(item=>`<span class="mq-item">${esc(item)}</span><span class="mq-sep">●</span>`).join('');
+  inner.innerHTML = half + half;
+}
+
+function renderStats(){
+  document.getElementById('stats-content').innerHTML = (D.stats||[]).map((s,i)=>`
+    <div class="stat-item" data-cy="stat-${i}">
+      <div class="stat-num" data-val="${esc(s.val)}" data-cy="stat-num-${i}">${esc(s.val)}</div>
+      <div class="stat-lbl">${esc(s.lbl)}</div>
+    </div>`).join('');
+}
+
+function renderServices(){
+  const svcs = lsvc();
+  document.getElementById('svc-header').innerHTML = `
+    <div class="section-eyebrow rev">${esc(tr('eyebrows.whatIDo'))}</div>
+    <h2 class="section-title rev">${esc(tr('titles.whatIDo'))}</h2>`;
+  document.getElementById('svc-content').innerHTML = svcs.map((s,i)=>`
+    <div class="svc-card rev rev-d${i+1}" data-cy="service-card-${i}">
+      <div class="svc-ico" data-cy="service-icon-${i}">${s.icon}</div>
+      <div class="svc-title" data-cy="service-title-${i}">${esc(s.title)}</div>
+      <p class="svc-desc" data-cy="service-desc-${i}">${esc(s.desc)}</p>
+    </div>`).join('');
+  initRev();
+}
+
+function renderSkills(){
+  const sk = tr('skills');
+  document.getElementById('skills-header').innerHTML = `
+    <div class="section-eyebrow rev">${esc(tr('eyebrows.skills'))}</div>
+    <h2 class="section-title rev" style="margin-bottom:1.5rem">${esc(tr('titles.skills'))}</h2>`;
+  const tabBar = `<div class="skills-tabs rev" data-cy="skills-tabs">
+    <button class="tab-btn active" data-cy="skills-tab-automation" onclick="sTab('automation',this)">${esc(sk.tabAuto)}</button>
+    <button class="tab-btn" data-cy="skills-tab-languages" onclick="sTab('languages',this)">${esc(sk.tabLang)}</button>
+    <button class="tab-btn" data-cy="skills-tab-tools" onclick="sTab('tools',this)">${esc(sk.tabTools)}</button>
+  </div>`;
+  const panels = ['automation','languages','tools'].map((t,pi)=>`
+    <div id="tab-${t}" class="skills-panel${pi===0?' active':''}" data-cy="skills-panel-${t}">
+      <div class="skill-bars">
+        ${(D.skillTabs?.[t]||[]).map((s,i)=>`
+          <div data-cy="skill-item-${t}-${i}">
+            <div class="sk-info">
+              <span class="sk-name" data-cy="skill-name-${t}-${i}">${esc(s.n)}</span>
+              <span class="sk-pct">${s.p}%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" data-w="${s.p}" data-cy="skill-fill-${t}-${i}"></div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+  document.getElementById('skills-bars').innerHTML = tabBar + panels;
+  const hi  = (D.hlPills||'').split(',').map(x=>x.trim()).filter(Boolean);
+  const all = (D.pills||'').split(',').map(x=>x.trim()).filter(Boolean);
+  document.getElementById('pills-area').innerHTML = `
+    <div class="pills-wrap rev">
+      <div class="pills-lbl">${esc(sk.stackLabel)}</div>
+      <div class="tool-cloud">
+        ${all.map(p=>`<span class="pill${hi.includes(p)?' hl':''}" data-cy="pill-${slug(p)}">${esc(p)}</span>`).join('')}
+      </div>
+    </div>`;
+  const radarEl = document.getElementById('radar-title-el');
+  if(radarEl) radarEl.textContent = sk.radarTitle;
+  initRev(); triggerBars('tab-automation'); buildRadar();
+}
+
+function renderExperience(){
+  document.getElementById('exp-header').innerHTML = `
+    <div class="section-eyebrow rev">${esc(tr('eyebrows.experience'))}</div>
+    <h2 class="section-title rev">${esc(tr('titles.experience'))}</h2>`;
+  document.getElementById('exp-content').innerHTML = (D.experience||[]).map((e,i)=>`
+    <div class="tl-item" data-cy="exp-item-${i}">
+      <div class="tl-dot${e.cur?' cur':''}" aria-hidden="true"></div>
+      <div class="exp-card" data-cy="exp-card-${i}" data-tilt>
+        <div class="exp-top">
+          <div>
+            <div class="exp-title" data-cy="exp-title-${i}">${esc(e.title)}</div>
+            <div class="exp-co" data-cy="exp-company-${i}">${esc(e.co)}</div>
+          </div>
+          <span class="exp-badge${e.cur?' cur':''}" data-cy="exp-period-${i}"${e.cur?` data-cy-also="exp-current-badge-${i}"`:''}>
+            ${esc(e.period)}
+          </span>
+        </div>
+        <p class="exp-desc" data-cy="exp-desc-${i}">${esc(e.desc)}</p>
+        <div class="exp-tags" data-cy="exp-tags-${i}">
+          ${(e.tags||'').split(',').map(t=>`<span class="exp-tag">${esc(t.trim())}</span>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+  initRev(); initTilt();
+}
+
+function renderCerts(){
+  document.getElementById('certs-header').innerHTML = `
+    <div class="section-eyebrow rev">${esc(tr('eyebrows.certs'))}</div>
+    <h2 class="section-title rev">${esc(tr('titles.certs'))}</h2>`;
+  document.getElementById('certs-content').innerHTML = (D.certifications||[]).map((c,i)=>`
+    <div class="cert-card" data-cy="cert-card-${i}">
+      <div class="cert-ico">${c.i||'📋'}</div>
+      <div>
+        <div class="cert-name" data-cy="cert-name-${i}">${esc(c.n)}</div>
+        <div class="cert-meta" data-cy="cert-issuer-${i}">${esc(c.m)}</div>
+      </div>
+      <div class="cert-yr" data-cy="cert-year-${i}">${esc(c.y)}</div>
+    </div>`).join('');
+  setTimeout(()=>document.querySelectorAll('.cert-card').forEach((el,i)=>setTimeout(()=>el.classList.add('vis'),i*45)),100);
+  initRev();
+}
+
+function renderEducation(){
+  document.getElementById('edu-header').innerHTML = `
+    <div class="section-eyebrow rev">${esc(tr('eyebrows.education'))}</div>
+    <h2 class="section-title rev">${esc(tr('titles.education'))}</h2>`;
+  document.getElementById('edu-content').innerHTML = (D.education||[]).map((e,i)=>`
+    <div class="edu-card rev" data-cy="edu-card-${i}">
+      <div class="edu-degree" data-cy="edu-degree-${i}">${esc(e.deg)}</div>
+      <div class="edu-school" data-cy="edu-school-${i}">${esc(e.sch)}</div>
+      <div class="edu-period" data-cy="edu-period-${i}">${esc(e.per)}</div>
+    </div>`).join('');
+  initRev();
+}
+
+function renderContact(){
+  const p = D.personal||{};
+  const c = tr('contact');
+  document.getElementById('contact-content').innerHTML = `
+    <div class="contact-hero rev">
+      <div class="section-eyebrow">${esc(tr('eyebrows.contact'))}</div>
+      <h2 class="section-title" data-cy="contact-title" style="margin-bottom:.5rem">${esc(tr('titles.contact'))}</h2>
+      <p data-cy="contact-desc">${esc(c.desc)}</p>
+    </div>
+    <div class="contact-cta rev rev-d1">
+      <a href="mailto:${esc(p.email)}" class="btn-primary" data-cy="cta-email">${esc(c.sendEmail)}</a>
+      <a href="tel:${esc(p.phone)}"   class="btn-outline"  data-cy="cta-call">${esc(c.callMe)}</a>
+    </div>
+    <div class="contact-grid rev rev-d2">
+      <a class="contact-card" href="mailto:${esc(p.email)}" data-cy="contact-email-card">
+        <div class="cc-icon">✉️</div>
+        <div class="cc-label">${esc(c.email)}</div>
+        <div class="cc-val">${esc(p.email)}</div>
+      </a>
+      <a class="contact-card" href="tel:${esc(p.phone)}" data-cy="contact-phone-card">
+        <div class="cc-icon">📱</div>
+        <div class="cc-label">${esc(c.phone)}</div>
+        <div class="cc-val">${esc(p.phone)}</div>
+      </a>
+      <div class="contact-card" data-cy="contact-location-card">
+        <div class="cc-icon">📍</div>
+        <div class="cc-label">${esc(c.location)}</div>
+        <div class="cc-val">${esc(p.location)}</div>
+      </div>
+      <div class="contact-card" data-cy="contact-company-card">
+        <div class="cc-icon">🏢</div>
+        <div class="cc-label">${esc(c.company)}</div>
+        <div class="cc-val">${esc(p.company)}</div>
+      </div>
+    </div>`;
+  document.getElementById('footer-el').innerHTML =
+    `© ${new Date().getFullYear()} <span class="f-name" data-cy="footer-name">${esc(p.name)}</span> — ${esc(lc('role'))} — ${esc(p.location)}`;
+  initRev();
+}
+
+// ══════════════════════════════════════════════════════
+// ANIMATIONS
+// ══════════════════════════════════════════════════════
+let _ro;
+function initRev(){
+  if(_ro) _ro.disconnect();
+  _ro = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.08});
+  document.querySelectorAll('.rev,.tl-item').forEach(el=>_ro.observe(el));
+  document.querySelectorAll('.skills-panel').forEach(p=>{
+    new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)triggerBars(p.id);}),{threshold:.2}).observe(p);
+  });
+}
+
+function initCountUp(){
+  const obs = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      const raw = el.dataset.val||el.textContent;
+      const num = parseFloat(raw);
+      const suf = raw.replace(/[\d.]/g,'');
+      if(!isNaN(num)) animCount(el, num, suf, 1600);
+      obs.unobserve(el);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.stat-num').forEach(el=>obs.observe(el));
+}
+
+function animCount(el, target, suffix, dur){
+  if(!el) return;
+  const s = performance.now();
+  const big = target >= 1000000;
+  (function tick(now){
+    const t = Math.min((now-s)/dur, 1);
+    const ease = 1-Math.pow(1-t,4);
+    el.textContent = big ? '1M'+suffix : Math.floor(ease*target)+suffix;
+    if(t<1) requestAnimationFrame(tick);
+  })(s);
+}
+
+function initTilt(){
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(900px) rotateX(${-y*5}deg) rotateY(${x*5}deg) translateZ(8px)`;
+      card.style.boxShadow=`${-x*20}px ${y*20}px 35px rgba(70,64,232,.08)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.boxShadow='';});
+  });
+}
+
+let _tt;
+function typeRole(text){
+  clearTimeout(_tt);
+  const el = document.getElementById('typed-role'); if(!el) return;
+  el.innerHTML = '<span class="cursor-blink"></span>';
+  let i = 0;
+  (function tick(){_tt=setTimeout(()=>{el.innerHTML=esc(text.slice(0,i))+'<span class="cursor-blink"></span>';if(i++<=text.length)tick();},i===0?600:55);})();
+}
+
+function sTab(name, btn){
+  document.querySelectorAll('.skills-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name)?.classList.add('active');
+  btn?.classList.add('active');
+  triggerBars('tab-'+name);
+}
+
+function triggerBars(id){
+  document.getElementById(id)?.querySelectorAll('.skill-fill').forEach(b=>{
+    b.style.width='0'; setTimeout(()=>{b.style.width=b.dataset.w+'%';},80);
+  });
+}
+
+function buildRadar(){
+  const cats=[{l:'Auto',v:90},{l:'Python',v:85},{l:'CI/CD',v:82},{l:'Agile',v:90},{l:'API',v:78},{l:'Tools',v:85}];
+  const cx=120,cy=120,r=85,n=cats.length;
+  let rings='',axes='',poly='',lbls='';
+  [.25,.5,.75,1].forEach(f=>{
+    const pts=cats.map((_,i)=>{const a=(i/n)*Math.PI*2-Math.PI/2;return`${cx+r*f*Math.cos(a)},${cy+r*f*Math.sin(a)}`;});
+    rings+=`<polygon points="${pts.join(' ')}" fill="none" stroke="var(--border)" stroke-width="1"/>`;
+  });
+  cats.forEach((_,i)=>{const a=(i/n)*Math.PI*2-Math.PI/2;axes+=`<line x1="${cx}" y1="${cy}" x2="${cx+r*Math.cos(a)}" y2="${cy+r*Math.sin(a)}" stroke="var(--border)" stroke-width="1"/>`;});
+  const pp=cats.map((c,i)=>{const a=(i/n)*Math.PI*2-Math.PI/2,v=c.v/100;return`${cx+r*v*Math.cos(a)},${cy+r*v*Math.sin(a)}`;});
+  poly=`<polygon points="${pp.join(' ')}" fill="rgba(70,64,232,.15)" stroke="var(--accent)" stroke-width="2"/>`;
+  cats.forEach((c,i)=>{const a=(i/n)*Math.PI*2-Math.PI/2,d=r+18;lbls+=`<text x="${cx+d*Math.cos(a)}" y="${cy+d*Math.sin(a)}" text-anchor="middle" dominant-baseline="middle" font-size="9" fill="var(--muted)" font-family="system-ui" font-weight="600">${c.l}</text>`;});
+  const svg=document.getElementById('radar-svg');if(svg)svg.innerHTML=rings+axes+poly+lbls;
+}
+
+// ══════════════════════════════════════════════════════
+// SCROLL & CURSOR
+// ══════════════════════════════════════════════════════
+window.addEventListener('scroll',()=>{
+  const h = document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('scroll-bar').style.width = (window.scrollY/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+  ['services','skills','experience','certifications','education','contact'].forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    const r=el.getBoundingClientRect();
+    document.querySelector(`.nav-link[href="#${id}"]`)?.classList.toggle('active',r.top<=120&&r.bottom>120);
+  });
+},{passive:true});
+
+document.addEventListener('mousemove',e=>{
+  const g=document.getElementById('cglow');
+  if(g){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';}
+},{passive:true});
+
+// ══════════════════════════════════════════════════════
+// MOBILE MENU
+// ══════════════════════════════════════════════════════
+function toggleMob(){
+  const m=document.getElementById('mob-menu'),t=document.getElementById('mob-tog');
+  if(m.classList.contains('open'))closeMob();
+  else{m.classList.add('open');t.classList.add('open');}
+}
+function closeMob(){
+  document.getElementById('mob-menu')?.classList.remove('open');
+  document.getElementById('mob-tog')?.classList.remove('open');
+}
+document.addEventListener('click',e=>{
+  const m=document.getElementById('mob-menu'),t=document.getElementById('mob-tog');
+  if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!t.contains(e.target))closeMob();
+});
+
+// ══════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════
+fetchData();
+</script>
+</body>
+</html>
