@@ -1024,6 +1024,7 @@ body::before {
   .svc-grid      { grid-template-columns:1fr; }
   .nav-links, .lang-wrap { display:none; }
   .ham           { display:flex; }
+  .scroll-hint   { display:none; }
   .timeline::before { left:18px; }
   .tl-item       { padding-left:56px; }
   .tl-dot        { left:10px; }
@@ -1245,10 +1246,9 @@ const T = {
     eduTitle:'Education',
     conEye:  'Get In Touch',
     conTitle:"Let's Connect",
-    conIntro:'Open to new projects. If you want quality built in from the start — not bolted on at the end — let\'s talk.',
-    avail:   'Open to new opportunities',
+    conIntro:'Quality built in from the start — not bolted on at the end. Have a project that needs real testing? Let\'s talk.',
     decoTitle:'Remote-friendly',
-    decoSub: 'Based in the Netherlands, available for remote and on-site assignments across Europe',
+    decoSub: 'Based in the Netherlands — remote and on-site across Europe',
     yr:      'yr',
     copy:    '© 2025 Sulaiman Hashimi',
     ctaExp: 'View Experience',
@@ -1277,10 +1277,9 @@ const T = {
     eduTitle:'Opleiding',
     conEye:  'Contact',
     conTitle:'Neem contact op',
-    conIntro:'Open voor nieuwe projecten. Wil je kwaliteit ingebouwd hebben vanaf dag één? Laten we praten.',
-    avail:   'Beschikbaar voor nieuwe kansen',
+    conIntro:'Kwaliteit ingebouwd vanaf dag één — niet er achteraf op geplakt. Een project dat echt getest moet worden? Laten we praten.',
     decoTitle:'Remote-vriendelijk',
-    decoSub: 'Gevestigd in Nederland, beschikbaar voor remote en on-site opdrachten in Europa',
+    decoSub: 'Gevestigd in Nederland — remote en on-site in Europa',
     yr:      'jr',
     copy:    '© 2025 Sulaiman Hashimi',
     ctaExp: 'Bekijk Ervaring',
@@ -1309,10 +1308,9 @@ const T = {
     eduTitle:'Educación',
     conEye:  'Contacto',
     conTitle:'Hablemos',
-    conIntro:'Abierto a nuevos proyectos. Si quieres calidad integrada desde el inicio, contáctame.',
-    avail:   'Abierto a nuevas oportunidades',
+    conIntro:'Calidad integrada desde el primer día — no añadida al final. ¿Tienes un proyecto que necesita testing de verdad? Hablemos.',
     decoTitle:'Remote-friendly',
-    decoSub: 'Disponible para proyectos remotos y presenciales en Europa',
+    decoSub: 'Con base en los Países Bajos — remoto y presencial en Europa',
     yr:      'a',
     copy:    '© 2025 Sulaiman Hashimi',
     ctaExp: 'Ver Experiencia',
@@ -1341,10 +1339,9 @@ const T = {
     eduTitle:'Éducation',
     conEye:  'Contact',
     conTitle:'Restons en contact',
-    conIntro:'Ouvert à de nouveaux projets. Si vous voulez la qualité intégrée dès le début, discutons.',
-    avail:   'Ouvert aux nouvelles opportunités',
+    conIntro:'La qualité intégrée dès le début — pas ajoutée à la fin. Un projet qui mérite de vrais tests ? Parlons-en.',
     decoTitle:'Remote-friendly',
-    decoSub: 'Basé aux Pays-Bas, disponible pour des missions remote et on-site en Europe',
+    decoSub: 'Basé aux Pays-Bas — remote et sur site en Europe',
     yr:      'an',
     copy:    '© 2025 Sulaiman Hashimi',
     ctaExp: 'Voir l\'Expérience',
@@ -1373,10 +1370,9 @@ const T = {
     eduTitle:'Ausbildung',
     conEye:  'Kontakt',
     conTitle:'Kontakt aufnehmen',
-    conIntro:'Offen für neue Projekte. Wenn Sie Qualität von Anfang an wollen, melden Sie sich.',
-    avail:   'Offen für neue Möglichkeiten',
+    conIntro:'Qualität von Anfang an eingebaut — nicht nachträglich aufgeklebt. Ein Projekt, das echtes Testen braucht? Melden Sie sich.',
     decoTitle:'Remote-freundlich',
-    decoSub: 'In den Niederlanden ansässig, verfügbar für Remote- und Vor-Ort-Einsätze in Europa',
+    decoSub: 'In den Niederlanden ansässig — remote und vor Ort in Europa',
     yr:      'J.',
     copy:    '© 2025 Sulaiman Hashimi',
     ctaExp: 'Erfahrung ansehen',
@@ -1746,7 +1742,6 @@ function renderContact() {
 
   document.getElementById('con-grid').innerHTML = `
     <div class="contact-left rv">
-      <div class="avail"><div class="avail-dot"></div>${t('avail')}</div>
       <h3>${t('conTitle')}</h3>
       <p>${t('conIntro')}</p>
       <div class="c-links">

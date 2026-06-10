@@ -137,7 +137,7 @@
   ],
   "i18n": {
     "nl": {
-      "badge": "Beschikbaar voor werk",
+      "badge": "Dingen kapotmaken zodat jij het niet hoeft",
       "role": "Test Automation Engineer",
       "bio": "Ik breek dingen opzettelijk — zodat jouw gebruikers dat nooit hoeven te doen. 4+ jaar lang bouwen aan automatiseringssystemen die teams snel laten leveren én goed laten slapen.",
       "services": [
@@ -148,7 +148,7 @@
       "statLbls": ["Jaar Ervaring", "Bedrijven", "Certificeringen", "Gebruikers Bereikt"]
     },
     "es": {
-      "badge": "Disponible para contratación",
+      "badge": "Rompiendo cosas para que tú no tengas que hacerlo",
       "role": "Ingeniero de Automatización de Pruebas",
       "bio": "Rompo cosas a propósito — para que tus usuarios nunca tengan que hacerlo. 4+ años construyendo sistemas de automatización que permiten a los equipos entregar rápido y dormir tranquilos.",
       "services": [
@@ -159,7 +159,7 @@
       "statLbls": ["Años de Experiencia", "Empresas", "Certificaciones", "Usuarios Impactados"]
     },
     "fr": {
-      "badge": "Disponible pour embauche",
+      "badge": "Je casse les choses pour que vous n'ayez pas à le faire",
       "role": "Ingénieur en Automatisation de Tests",
       "bio": "Je casse les choses exprès — pour que vos utilisateurs n'aient jamais à le faire. 4+ ans à construire des systèmes d'automatisation qui permettent aux équipes de livrer vite et dormir sereinement.",
       "services": [
@@ -170,7 +170,7 @@
       "statLbls": ["Ans d'Expérience", "Entreprises", "Certifications", "Utilisateurs Impactés"]
     },
     "de": {
-      "badge": "Verfügbar für neue Stellen",
+      "badge": "Dinge kaputtmachen, damit Sie es nicht müssen",
       "role": "Test-Automatisierungsingenieur",
       "bio": "Ich breche Dinge absichtlich — damit Ihre Nutzer das nie müssen. 4+ Jahre Aufbau von Automatisierungssystemen, die Teams schnell liefern und ruhig schlafen lassen.",
       "services": [
