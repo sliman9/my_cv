@@ -920,8 +920,8 @@ body::before {
 ═══════════════════════════════════════════════════════════════ */
 #contact { background:var(--bg2); border-top:1px solid var(--border); }
 .contact-grid {
-  display:grid; grid-template-columns:1fr 1fr; gap:56px;
-  max-width:980px; margin:0 auto; align-items:start;
+  display:grid; grid-template-columns:1fr;
+  max-width:600px; margin:0 auto;
 }
 .contact-left h3 { font-size:1.5rem; font-weight:900; letter-spacing:-0.02em; margin-bottom:12px; }
 .contact-left p  { color:var(--tm); line-height:1.7; margin-bottom:28px; }
@@ -1760,15 +1760,6 @@ function renderContact() {
             </div>
           </a>`
         ).join('')}
-      </div>
-    </div>
-    <div class="rv" style="transition-delay:0.2s">
-      <div class="contact-deco">
-        <div class="contact-deco-inner">
-          <div class="deco-emoji">🌍</div>
-          <div class="deco-title">${t('decoTitle')}</div>
-          <div class="deco-sub">${t('decoSub')}</div>
-        </div>
       </div>
     </div>
   `;
