@@ -141,7 +141,6 @@ test.describe('Hero section', () => {
   });
 
   test('typewriter role text appears', async ({ page }) => {
-    // Role text types in progressively — wait for it to be non-empty
     await expect(page.locator(cy('hero-role'))).not.toBeEmpty({ timeout: 5000 });
   });
 });

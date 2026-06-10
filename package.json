@@ -4,13 +4,14 @@
   "description": "Sulaiman Hashimi — Test Automation Engineer CV website",
   "scripts": {
     "start": "npx serve application --listen 3000",
-    "dev":   "npx serve application --listen 3000",
-    "test":  "npx playwright test",
+    "dev": "npx serve application --listen 3000",
+    "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
-    "test:ui":     "npx playwright test --ui",
+    "test:ui": "npx playwright test --ui",
     "test:report": "npx playwright show-report"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.0"
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^25.9.2"
   }
 }
