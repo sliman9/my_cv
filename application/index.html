@@ -961,13 +961,12 @@ body::before {
 .c-ico {
   width:42px; height:42px; border-radius:var(--r-m);
   display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem; flex-shrink:0;
+  flex-shrink:0;
+  background: rgba(120,120,128,0.14);
+  border: 1px solid var(--border);
+  color: rgba(255,255,255,0.72);
 }
-.c-ico.em  { background: rgba(10,132,255,0.14); }
-.c-ico.ph  { background: rgba(90,200,250,0.12); }
-.c-ico.loc { background: rgba(120,120,128,0.18); }
-.c-ico.li  { background: rgba(10,102,194,0.18); }
-.c-ico.gh  { background: rgba(255,255,255,0.08); }
+.c-ico svg { width:18px; height:18px; }
 .c-txt .lbl { font-size:0.65rem; font-weight:800; color:var(--tm); text-transform:uppercase; letter-spacing:0.1em; }
 .c-txt .val { font-size:0.9rem; font-weight:700; }
 
