@@ -5,10 +5,10 @@
   "scripts": {
     "start": "npx serve application --listen 3000",
     "dev": "npx serve application --listen 3000",
-    "test": "npx playwright test",
-    "test:headed": "npx playwright test --headed",
-    "test:ui": "npx playwright test --ui",
-    "test:report": "npx playwright show-report"
+    "test": "npx playwright test --config testing/playwright.config.ts",
+    "test:headed": "npx playwright test --config testing/playwright.config.ts --headed",
+    "test:ui": "npx playwright test --config testing/playwright.config.ts --ui",
+    "test:report": "npx playwright show-report testing/playwright-report"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.0",
