@@ -138,12 +138,12 @@
   "i18n": {
     "nl": {
       "badge": "Beschikbaar voor werk",
-      "role": "Test Automatisering Engineer",
-      "bio": "Ik breek dingen opzettelijk — zodat jouw gebruikers dat nooit hoeven te doen. 4+ jaar bouwen van automatiseringssystemen die teams snel laten leveren én goed laten slapen.",
+      "role": "Test Automation Engineer",
+      "bio": "Ik breek dingen opzettelijk — zodat jouw gebruikers dat nooit hoeven te doen. 4+ jaar lang bouwen aan automatiseringssystemen die teams snel laten leveren én goed laten slapen.",
       "services": [
         { "icon": "🏗", "title": "Framework Architectuur",  "desc": "De meeste teams erven een testframework dat ze haten. Ik bouw er een dat ze écht willen gebruiken — schaalbaar, CI/CD-klaar en gebouwd voor het hele team vanaf dag één." },
         { "icon": "🔄", "title": "CI/CD Integratie",        "desc": "Geen 'het werkte op mijn machine' meer. Ik verbind jouw testsuite met CI/CD zodat elke commit geverifieerd wordt voordat hij de productie bereikt." },
-        { "icon": "🔬", "title": "Kwaliteitsstrategie",     "desc": "De meeste bugs worden geboren in de designvergadering, niet in de code review. Ik zit vroeg aan tafel — zodat kwaliteit ingebouwd is, niet er achteraf aan geplakt." }
+        { "icon": "🔬", "title": "Kwaliteitsstrategie",     "desc": "De meeste bugs worden geboren in de designvergadering, niet in de code review. Ik zit vroeg aan tafel — zodat kwaliteit ingebouwd is, niet er achteraf op geplakt." }
       ]
     },
     "es": {
