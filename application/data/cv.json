@@ -32,7 +32,7 @@
     {
       "icon": "shield",
       "title": "Quality Strategy",
-      "desc": "Most bugs are born in the design meeting, not the code review. I sit at that table early — so quality is built in, not bolted on."
+      "desc": "Most bugs are born in the design meeting, not the code review. I sit at that table early — so quality becomes part of the product, not a phase tacked on at the end."
     }
   ],
   "skillTabs": {
@@ -77,7 +77,7 @@
       "co": "Politie Utrecht",
       "period": "Dec 2025 — Present",
       "cur": true,
-      "desc": "Full ownership of testing across the team — strategy, manual, and automated. I introduced TypeScript and Playwright as the automation stack and built a testing practice from the ground up within the organisation. From defining what to test and how, to executing it hands-on every sprint.",
+      "desc": "Full ownership of testing at a national police organisation — strategy, manual, and automation. I introduced TypeScript and Playwright as the automation stack and built the testing practice from the ground up. I define what gets tested, how it gets tested, and I execute on that every sprint.",
       "tags": "TypeScript, Playwright, Test Strategy, Manual Testing, Automated Testing, Agile, Jira"
     },
     {
@@ -95,7 +95,7 @@
       "co": "UWV — K3CR / Klantbeeld",
       "period": "Feb 2024 — Dec 2024",
       "cur": false,
-      "desc": "Full regression coverage for a complex application family — automated, every three weeks, without fail. Rebuilt the test approach with Playwright and Robot Framework, cut manual effort significantly, and got everything running in CI so the team could ship with confidence.",
+      "desc": "Full regression coverage for a complex application family — automated, on schedule, every sprint. Rebuilt the test approach from the ground up with Playwright and Robot Framework, replaced manual regression cycles with automated pipelines, and wired everything into CI so the team could ship with confidence.",
       "tags": "Playwright, Robot Framework, Selenium, Python, SOAP, SQL, Android, Regression"
     },
     {
@@ -127,9 +127,9 @@
     { "id": 7,  "n": "Professional Scrum Master I (PSM I)",             "m": "Scrum.org / Agile",               "y": "2022", "i": "team" },
     { "id": 8,  "n": "Tosca Automation Specialist Level 1 & 2",         "m": "Tricentis",                       "y": "2022", "i": "search" },
     { "id": 9,  "n": "Robot Framework Test Automation Level 1 & 2",     "m": "Test Automation University",      "y": "2022", "i": "chip" },
-    { "id": 10, "n": "TMAP: Quality for Cross-Functional Teams",        "m": "ISTQB / Software Testing",        "y": "2023", "i": "chart" },
+    { "id": 10, "n": "TMAP: Quality for Cross-Functional Teams",        "m": "iSQI Group / Software Testing",   "y": "2023", "i": "chart" },
     { "id": 11, "n": "Postman: Getting Started API Testing",            "m": "Postman",                         "y": "2023", "i": "api" },
-    { "id": 12, "n": "CCNA — Cisco Certified Network Associate",        "m": "Cisco / Routing & Switching",     "y": "2018", "i": "network" }
+    { "id": 12, "n": "CCNA — Cisco Certified Network Associate",        "m": "Cisco / Routing & Switching",     "y": "2017", "i": "network" }
   ],
   "education": [
     { "id": 1, "deg": "HBO Business IT & Management", "sch": "Hogeschool Utrecht",   "per": "2019 – 2022 · Diploma", "icon": "graduation" },
@@ -143,7 +143,7 @@
       "services": [
         { "icon": "🏗", "title": "Framework Architectuur",  "desc": "De meeste teams erven een testframework dat ze haten. Ik bouw er een dat ze écht willen gebruiken — schaalbaar, CI/CD-klaar en gebouwd voor het hele team vanaf dag één." },
         { "icon": "🔄", "title": "CI/CD Integratie",        "desc": "Geen 'het werkte op mijn machine' meer. Ik verbind jouw testsuite met CI/CD zodat elke commit geverifieerd wordt voordat hij de productie bereikt." },
-        { "icon": "🔬", "title": "Kwaliteitsstrategie",     "desc": "De meeste bugs worden geboren in de designvergadering, niet in de code review. Ik zit vroeg aan tafel — zodat kwaliteit ingebouwd is, niet er achteraf op geplakt." }
+        { "icon": "🔬", "title": "Kwaliteitsstrategie",     "desc": "De meeste bugs worden geboren in de designvergadering, niet in de code review. Ik zit vroeg aan tafel — zodat kwaliteit onderdeel wordt van het product, niet een fase aan het einde." }
       ],
       "statLbls": ["Jaar Ervaring", "Bedrijven", "Certificeringen", "Gebruikers Bereikt"]
     },
@@ -154,7 +154,7 @@
       "services": [
         { "icon": "🏗", "title": "Arquitectura de Framework", "desc": "La mayoría de equipos heredan un framework de pruebas que odian. Yo construyo uno que realmente quieren usar — escalable, listo para CI/CD y pensado desde el primer día." },
         { "icon": "🔄", "title": "Integración CI/CD",         "desc": "Se acabó el 'funcionaba en mi máquina.' Conecto tu suite de pruebas al CI/CD para que cada commit sea verificado antes de llegar a producción." },
-        { "icon": "🔬", "title": "Estrategia de Calidad",     "desc": "La mayoría de bugs nacen en la reunión de diseño. Me siento en esa mesa desde el principio — para que la calidad esté integrada, no añadida después." }
+        { "icon": "🔬", "title": "Estrategia de Calidad",     "desc": "La mayoría de bugs nacen en la reunión de diseño. Me siento en esa mesa desde el principio — para que la calidad sea parte del producto, no una fase al final." }
       ],
       "statLbls": ["Años de Experiencia", "Empresas", "Certificaciones", "Usuarios Impactados"]
     },
@@ -165,7 +165,7 @@
       "services": [
         { "icon": "🏗", "title": "Architecture de Framework", "desc": "La plupart des équipes héritent d'un framework qu'elles détestent. J'en construis un qu'elles veulent vraiment utiliser — scalable, prêt pour CI/CD dès le premier jour." },
         { "icon": "🔄", "title": "Intégration CI/CD",         "desc": "Fini le 'ça marchait sur ma machine.' Je connecte votre suite de tests au CI/CD pour que chaque commit soit vérifié avant d'atteindre la production." },
-        { "icon": "🔬", "title": "Stratégie Qualité",         "desc": "La plupart des bugs naissent en réunion de conception. Je suis à cette table tôt — pour que la qualité soit intégrée, pas ajoutée après coup." }
+        { "icon": "🔬", "title": "Stratégie Qualité",         "desc": "La plupart des bugs naissent en réunion de conception. Je suis à cette table tôt — pour que la qualité soit intégrée au produit, pas reléguée en fin de projet." }
       ],
       "statLbls": ["Ans d'Expérience", "Entreprises", "Certifications", "Utilisateurs Impactés"]
     },
@@ -176,7 +176,7 @@
       "services": [
         { "icon": "🏗", "title": "Framework-Architektur",  "desc": "Die meisten Teams erben ein Test-Framework, das sie hassen. Ich baue eines, das sie wirklich nutzen wollen — skalierbar, CI/CD-bereit, vom ersten Tag an für das ganze Team." },
         { "icon": "🔄", "title": "CI/CD-Integration",       "desc": "Kein 'hat bei mir funktioniert' mehr. Ich verbinde Ihre Test-Suite mit CI/CD, damit jeder Commit verifiziert wird, bevor er die Produktion erreicht." },
-        { "icon": "🔬", "title": "Qualitätsstrategie",      "desc": "Die meisten Bugs entstehen im Design-Meeting. Ich sitze früh an diesem Tisch — damit Qualität eingebaut ist, nicht nachträglich draufgeschraubt." }
+        { "icon": "🔬", "title": "Qualitätsstrategie",      "desc": "Die meisten Bugs entstehen im Design-Meeting. Ich sitze früh an diesem Tisch — damit Qualität Teil des Produkts wird, keine nachgelagerte Phase." }
       ],
       "statLbls": ["Jahre Erfahrung", "Unternehmen", "Zertifizierungen", "Erreichte Nutzer"]
     }
