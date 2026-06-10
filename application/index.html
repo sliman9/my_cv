@@ -712,9 +712,10 @@ body::before {
 .s-legend { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:32px; }
 .s-leg { display:flex; align-items:center; gap:7px; font-size:0.72rem; font-weight:700; color:var(--tm); }
 .s-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-.s-dot.expert     { background:var(--gold);     box-shadow:0 0 8px var(--gold-g); }
-.s-dot.advanced   { background:var(--purple-l); box-shadow:0 0 8px var(--purple-g); }
-.s-dot.proficient { background:var(--cyan);     box-shadow:0 0 8px var(--cyan-g); }
+.s-dot.expert     { background:#A78BFA; box-shadow:0 0 8px rgba(139,92,246,0.5); }
+.s-dot.advanced   { background:#5E9CF5; box-shadow:0 0 8px rgba(10,132,255,0.4); }
+.s-dot.proficient { background:#4ADE80; box-shadow:0 0 8px rgba(48,209,88,0.4); }
+.s-dot.beginner   { background:rgba(255,255,255,0.65); }
 
 /* Skill cloud */
 .s-pane { display:none; }
@@ -732,42 +733,57 @@ body::before {
 }
 .stag:hover { transform:translateY(-5px) scale(1.06); }
 
-/* Proficiency tier colours — Apple system */
+/* Proficiency tiers — color-coded by years of experience */
 .stag.expert {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.9);
+  /* 4+ years — purple */
+  background: rgba(139,92,246,0.08);
+  border-color: rgba(139,92,246,0.28);
+  color: #A78BFA;
 }
 .stag.expert:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.36);
-  box-shadow: 0 10px 28px rgba(255,255,255,0.05);
+  background: rgba(139,92,246,0.14);
+  border-color: rgba(139,92,246,0.5);
+  box-shadow: 0 10px 28px rgba(139,92,246,0.2);
 }
 .stag.advanced {
+  /* 2+ years — blue */
   background: rgba(10,132,255,0.08);
   border-color: rgba(10,132,255,0.28);
-  color: var(--purple-l);
+  color: #5E9CF5;
 }
 .stag.advanced:hover {
   background: rgba(10,132,255,0.14);
   border-color: rgba(10,132,255,0.5);
-  box-shadow: 0 10px 28px var(--purple-g);
+  box-shadow: 0 10px 28px rgba(10,132,255,0.2);
 }
 .stag.proficient {
-  background: rgba(90,200,250,0.06);
-  border-color: rgba(90,200,250,0.22);
-  color: var(--cyan);
+  /* 1+ year — green */
+  background: rgba(48,209,88,0.08);
+  border-color: rgba(48,209,88,0.25);
+  color: #4ADE80;
 }
 .stag.proficient:hover {
-  background: rgba(90,200,250,0.12);
-  border-color: rgba(90,200,250,0.44);
-  box-shadow: 0 10px 28px var(--cyan-g);
+  background: rgba(48,209,88,0.14);
+  border-color: rgba(48,209,88,0.45);
+  box-shadow: 0 10px 28px rgba(48,209,88,0.15);
+}
+.stag.beginner {
+  /* < 1 year — white */
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.72);
+}
+.stag.beginner:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 10px 28px rgba(255,255,255,0.04);
 }
 
 .stag-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-.stag.expert   .stag-dot { background:var(--gold);     box-shadow:0 0 6px var(--gold-g); }
-.stag.advanced .stag-dot { background:var(--purple-l); box-shadow:0 0 6px var(--purple-g); }
-.stag.proficient .stag-dot { background:var(--cyan);   box-shadow:0 0 6px var(--cyan-g); }
+.stag.expert    .stag-dot { background:#A78BFA; box-shadow:0 0 6px rgba(139,92,246,0.5); }
+.stag.advanced  .stag-dot { background:#5E9CF5; box-shadow:0 0 6px rgba(10,132,255,0.4); }
+.stag.proficient .stag-dot { background:#4ADE80; box-shadow:0 0 6px rgba(48,209,88,0.4); }
+.stag.beginner  .stag-dot { background:rgba(255,255,255,0.6); }
 
 .stag-yr { font-size:0.62rem; font-weight:700; opacity:0.55; letter-spacing:0.04em; font-family:var(--fmono); }
 
@@ -1240,9 +1256,9 @@ const T = {
     svcSub:  'End-to-end quality engineering — from architecture to delivery',
     skEye:   'Skills & Expertise',
     skTitle: 'Technical Proficiency',
-    skSub:   'Color-coded by proficiency — Expert, Advanced, and Proficient',
+    skSub:   'Color-coded by years of experience — Pro (4+), Intermediate (2+), Beginner (1+)',
     tabs:    {automation:'Automation',languages:'Languages',tools:'Tools',all:'All'},
-    levels:  {expert:'Expert',advanced:'Advanced',proficient:'Proficient'},
+    levels:  {expert:'Pro',advanced:'Intermediate',proficient:'Beginner',beginner:'Learning'},
     expEye:  'Career Journey',
     expTitle:'Work Experience',
     certEye: 'Credentials',
@@ -1271,9 +1287,9 @@ const T = {
     svcSub:  'End-to-end kwaliteitsborging — van architectuur tot oplevering',
     skEye:   'Vaardigheden',
     skTitle: 'Technische Bekwaamheid',
-    skSub:   'Kleurgecodeerd op niveau — Expert, Gevorderd en Bedreven',
+    skSub:   'Kleurgecodeerd op ervaringsjaren — Pro (4+), Gemiddeld (2+), Beginner (1+)',
     tabs:    {automation:'Automatisering',languages:'Talen',tools:'Tools',all:'Alles'},
-    levels:  {expert:'Expert',advanced:'Gevorderd',proficient:'Bedreven'},
+    levels:  {expert:'Pro',advanced:'Gemiddeld',proficient:'Beginner',beginner:'Lerende'},
     expEye:  'Loopbaan',
     expTitle:'Werkervaring',
     certEye: 'Kwalificaties',
@@ -1302,9 +1318,9 @@ const T = {
     svcSub:  'Ingeniería de calidad de principio a fin',
     skEye:   'Habilidades y Experiencia',
     skTitle: 'Competencia Técnica',
-    skSub:   'Código de colores por nivel de dominio — Experto, Avanzado y Competente',
+    skSub:   'Código de colores por años de experiencia — Pro (4+), Intermedio (2+), Principiante (1+)',
     tabs:    {automation:'Automatización',languages:'Lenguajes',tools:'Herramientas',all:'Todo'},
-    levels:  {expert:'Experto',advanced:'Avanzado',proficient:'Competente'},
+    levels:  {expert:'Pro',advanced:'Intermedio',proficient:'Principiante',beginner:'Aprendiendo'},
     expEye:  'Trayectoria',
     expTitle:'Experiencia Laboral',
     certEye: 'Credenciales',
@@ -1333,9 +1349,9 @@ const T = {
     svcSub:  'Ingénierie qualité de bout en bout',
     skEye:   'Compétences & Expertise',
     skTitle: 'Maîtrise Technique',
-    skSub:   'Code couleur par niveau de maîtrise — Expert, Avancé et Compétent',
+    skSub:   'Code couleur par années d\'expérience — Pro (4+), Intermédiaire (2+), Débutant (1+)',
     tabs:    {automation:'Automatisation',languages:'Langages',tools:'Outils',all:'Tout'},
-    levels:  {expert:'Expert',advanced:'Avancé',proficient:'Compétent'},
+    levels:  {expert:'Pro',advanced:'Intermédiaire',proficient:'Débutant',beginner:'Apprentissage'},
     expEye:  'Parcours',
     expTitle:'Expérience Professionnelle',
     certEye: 'Accréditations',
@@ -1364,9 +1380,9 @@ const T = {
     svcSub:  'End-to-End Qualitätssicherung — von der Architektur bis zur Auslieferung',
     skEye:   'Fähigkeiten & Expertise',
     skTitle: 'Technische Kompetenz',
-    skSub:   'Farbcodiert nach Kenntnisstufe — Experte, Fortgeschritten und Versiert',
+    skSub:   'Farbcodiert nach Erfahrungsjahren — Pro (4+), Mittelstufe (2+), Einsteiger (1+)',
     tabs:    {automation:'Automatisierung',languages:'Sprachen',tools:'Tools',all:'Alle'},
-    levels:  {expert:'Experte',advanced:'Fortgeschritten',proficient:'Versiert'},
+    levels:  {expert:'Pro',advanced:'Mittelstufe',proficient:'Einsteiger',beginner:'Lernend'},
     expEye:  'Karriere',
     expTitle:'Berufserfahrung',
     certEye: 'Qualifikationen',
@@ -1622,9 +1638,12 @@ function renderSkills() {
   const lLbls  = t('levels') || {};
   const yrLbl  = t('yr') || 'yr';
 
+  // Level derived purely from years: 4+ pro, 2+ intermediate, 1+ beginner, <1 learning
+  const yearsToLevel = y => y >= 4 ? 'expert' : y >= 2 ? 'advanced' : y >= 1 ? 'proficient' : 'beginner';
+
   // Build a skill tag HTML element
   const makeTag = s => {
-    const lvl = s.level || 'proficient';
+    const lvl = yearsToLevel(s.years);
     const yr  = s.years ? `<span class="stag-yr">${s.years}${yrLbl}</span>` : '';
     return `<span class="stag ${lvl}"><span class="stag-dot"></span>${s.n}${yr}</span>`;
   };
@@ -1632,7 +1651,7 @@ function renderSkills() {
   // Legend
   const legend = `
     <div class="s-legend">
-      ${['expert','advanced','proficient'].map(l =>
+      ${['expert','advanced','proficient','beginner'].map(l =>
         `<div class="s-leg"><div class="s-dot ${l}"></div><span>${lLbls[l]||l}</span></div>`
       ).join('')}
     </div>`;
