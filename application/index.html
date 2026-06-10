@@ -178,6 +178,7 @@ body::before {
 /* Center pill — frosted link group */
 .nav-links {
   display: flex;
+  align-items: stretch;
   gap: 2px;
   background: rgba(255,255,255,0.055);
   border: 1px solid rgba(255,255,255,0.08);
@@ -186,11 +187,17 @@ body::before {
   flex-shrink: 1;
   overflow: hidden;
 }
+.nav-links li {
+  display: flex;
+  align-items: stretch;
+}
 .nav-links a {
+  display: flex;
+  align-items: center;
   font-size: 0.79rem;
   font-weight: 600;
   color: rgba(255,255,255,0.56);
-  padding: 6px 12px;
+  padding: 0 12px;
   border-radius: 8px;
   transition: color 0.2s ease, background 0.2s ease;
   white-space: nowrap;
