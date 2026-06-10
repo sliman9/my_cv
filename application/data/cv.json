@@ -1,13 +1,15 @@
 {
   "personal": {
     "name": "Sulaiman Hashimi",
-    "badge": "Breaking things so you dont have to",
+    "badge": "Breaking things so you don't have to",
     "role": "Test Automation Engineer",
     "bio": "I break things on purpose — so your users never have to. 4+ years building the automation systems that let teams ship fast and sleep soundly.",
     "email": "Sulaiman@greater.nl",
     "phone": "+31 6 40 96 37 33",
     "location": "Oss, Netherlands",
-    "company": "Greater BV"
+    "company": "Greater BV",
+    "linkedin": "https://www.linkedin.com/in/sulaiman-hashimi-526a13239/",
+    "github": "https://github.com/sliman9"
   },
   "profilePhoto": "assets/photo.jpg",
   "stats": [
@@ -35,28 +37,38 @@
   ],
   "skillTabs": {
     "automation": [
-      { "n": "Robot Framework",   "p": 100 },
-      { "n": "Selenium",          "p": 100 },
-      { "n": "Playwright",        "p": 90 },
-      { "n": "CI/CD Pipelines",   "p": 80 },
-      { "n": "Page Object Model", "p": 100 }
+      { "n": "Robot Framework",   "level": "expert",     "years": 4 },
+      { "n": "Selenium",          "level": "expert",     "years": 2 },
+      { "n": "Playwright",        "level": "expert",     "years": 2 },
+      { "n": "Page Object Model", "level": "expert",     "years": 4 },
+      { "n": "API Testing",       "level": "advanced",   "years": 3 },
+      { "n": "CI/CD Pipelines",   "level": "advanced",   "years": 3 },
+      { "n": "Visual Regression", "level": "advanced",   "years": 2 },
+      { "n": "Android Testing",   "level": "advanced",   "years": 2 },
+      { "n": "E2E Testing",       "level": "expert",     "years": 4 }
     ],
     "languages": [
-      { "n": "Python",           "p": 90 },
-      { "n": "TypeScript",       "p": 80 },
-      { "n": "Robot Framework DSL","p": 90 },
-      { "n": "Bash / Shell",     "p": 70 },
-      { "n": "HTML",       "p": 75 }
+      { "n": "Python",             "level": "expert",     "years": 2 },
+      { "n": "TypeScript",         "level": "advanced",   "years": 2 },
+      { "n": "Robot Framework DSL","level": "expert",     "years": 4 },
+      { "n": "JavaScript",         "level": "advanced",   "years": 3 },
+      { "n": "Bash / Shell",       "level": "advanced",   "years": 3 },
+      { "n": "SQL",                "level": "advanced",   "years": 3 },
+      { "n": "HTML / CSS",         "level": "proficient", "years": 3 }
     ],
     "tools": [
-      { "n": "Jira",                   "p": 100 },
-      { "n": "GitHub / GitHub Actions","p": 100 },
-      { "n": "Agile / Scrum",          "p": 100 },
-      { "n": "Confluence",             "p": 80 },
-      { "n": "ITIL",                   "p": 90 }
+      { "n": "Jira",                    "level": "expert",     "years": 4 },
+      { "n": "GitHub Actions",          "level": "expert",     "years": 3 },
+      { "n": "Agile / Scrum",           "level": "expert",     "years": 4 },
+      { "n": "Postman",                 "level": "advanced",   "years": 3 },
+      { "n": "Confluence",              "level": "advanced",   "years": 3 },
+      { "n": "ITIL",                    "level": "advanced",   "years": 2 },
+      { "n": "VS Code",                 "level": "expert",     "years": 4 },
+      { "n": "Tosca",                   "level": "proficient", "years": 2 },
+      { "n": "Docker",                  "level": "proficient", "years": 2 }
     ]
   },
-  "pills": "Python, TypeScript, Robot Framework, Selenium, Playwright, GitHub Actions, CI/CD, Jira, Confluence, SQL, Postman, Tosca, Agile/Scrum, ITIL, VS Code, Android Testing, Visual Regression, Page Object Model",
+  "pills": "Python, TypeScript, Robot Framework, Selenium, Playwright, GitHub Actions, CI/CD, Jira, Confluence, SQL, Postman, Tosca, Agile/Scrum, ITIL, VS Code, Android Testing, Visual Regression, Page Object Model, API Testing, E2E Testing",
   "hlPills": "Python, TypeScript, Robot Framework, Selenium, Playwright",
   "experience": [
     {
@@ -120,8 +132,8 @@
     { "id": 12, "n": "CCNA — Cisco Certified Network Associate",        "m": "Cisco / Routing & Switching",     "y": "2018", "i": "🌐" }
   ],
   "education": [
-    { "id": 1, "deg": "HBO Business IT & Management", "sch": "Hogeschool Utrecht",    "per": "2019 – 2022 · Diploma" },
-    { "id": 2, "deg": "MBO4 ICT Systeembeheerder",    "sch": "ROC Midden Nederland",  "per": "2016 – 2019 · Diploma" }
+    { "id": 1, "deg": "HBO Business IT & Management", "sch": "Hogeschool Utrecht",   "per": "2019 – 2022 · Diploma", "icon": "🎓" },
+    { "id": 2, "deg": "MBO4 ICT Systeembeheerder",   "sch": "ROC Midden Nederland", "per": "2016 – 2019 · Diploma", "icon": "💻" }
   ],
   "i18n": {
     "nl": {
