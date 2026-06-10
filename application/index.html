@@ -45,11 +45,11 @@
   --ff:      'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
   --fmono:   'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
 
-  /* radius — Apple-consistent */
+  /* radius — all containers match nav (18px) */
   --r-s:  8px;
   --r-m:  12px;
-  --r-l:  16px;
-  --r-xl: 20px;
+  --r-l:  18px;
+  --r-xl: 22px;
   --r-f:  9999px;
 
   /* transitions */
@@ -319,7 +319,7 @@ body::before {
 .mob-langs {
   background: rgba(26,26,28,0.92);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
+  border-radius: var(--r-l);
   padding: 5px;
   display: flex;
   gap: 3px;
@@ -395,7 +395,7 @@ body::before {
   backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid rgba(10,132,255,0.28);
-  border-radius: var(--r-f);
+  border-radius: var(--r-l);
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--purple-l);
   margin-bottom: 24px;
@@ -446,7 +446,7 @@ body::before {
 .btns { display:flex; gap:14px; flex-wrap:wrap; }
 .btn {
   display:inline-flex; align-items:center; gap:9px;
-  padding:14px 28px; border-radius:var(--r-f);
+  padding:14px 28px; border-radius:var(--r-l);
   font-size:0.875rem; font-weight:700;
   transition: transform 0.3s var(--spring), box-shadow 0.3s var(--ease);
   position:relative; overflow:hidden;
@@ -531,7 +531,7 @@ body::before {
 .fpill {
   padding:6px 13px;
   background:var(--card); border:1px solid var(--border);
-  border-radius:var(--r-f);
+  border-radius:var(--r-m);
   font-size:0.72rem; font-weight:600; color:var(--tm);
   backdrop-filter:blur(8px);
   animation:pill-bob 3.5s ease-in-out infinite;
@@ -674,7 +674,7 @@ body::before {
 
 .skill-tabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:36px; }
 .stab {
-  padding: 9px 20px; border-radius: var(--r-f);
+  padding: 9px 20px; border-radius: var(--r-m);
   font-size: 0.825rem; font-weight: 700;
   color: var(--tm);
   background: rgba(120,120,128,0.08);
@@ -708,7 +708,7 @@ body::before {
 
 .stag {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 18px; border-radius: var(--r-f);
+  padding: 10px 18px; border-radius: var(--r-m);
   font-size: 0.85rem; font-weight: 700; border: 1px solid;
   backdrop-filter: blur(8px) saturate(150%);
   -webkit-backdrop-filter: blur(8px) saturate(150%);
@@ -808,7 +808,7 @@ body::before {
 .exp-title { font-size:1rem; font-weight:800; }
 .exp-badge {
   font-size:0.7rem; font-weight:700;
-  padding:4px 11px; border-radius:var(--r-f);
+  padding:4px 11px; border-radius:var(--r-s);
   background: rgba(10,132,255,0.1);
   border: 1px solid rgba(10,132,255,0.22);
   color: var(--purple-l); white-space:nowrap; flex-shrink:0;
@@ -823,7 +823,7 @@ body::before {
 .exp-tags { display:flex; flex-wrap:wrap; gap:6px; }
 .exp-tag {
   padding:3px 10px; background: rgba(120,120,128,0.12); border:1px solid var(--border);
-  border-radius:var(--r-f); font-size:0.68rem; font-weight:700;
+  border-radius:var(--r-s); font-size:0.68rem; font-weight:700;
   color:var(--tm); font-family:var(--fmono); letter-spacing:0.02em;
 }
 
@@ -898,7 +898,7 @@ body::before {
 /* Available badge */
 .avail {
   display: inline-flex; align-items: center; gap: 9px;
-  padding: 8px 16px; border-radius: var(--r-f);
+  padding: 8px 16px; border-radius: var(--r-l);
   background: rgba(48,209,88,0.08);
   backdrop-filter: blur(8px) saturate(150%);
   -webkit-backdrop-filter: blur(8px) saturate(150%);
