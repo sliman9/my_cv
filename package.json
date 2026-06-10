@@ -1,17 +1,17 @@
 {
-  "name": "sulaiman-cv",
+  "name": "testingwithsul-cv",
   "version": "1.0.0",
-  "description": "Sulaiman Hashimi — Test Automation Engineer CV website",
+  "private": true,
+  "description": "Sulaiman Hashimi — interactive liquid-glass digital CV",
   "scripts": {
-    "start": "npx serve application --listen 3000",
-    "dev": "npx serve application --listen 3000",
-    "test": "npx playwright test --config testing/playwright.config.ts",
-    "test:headed": "npx playwright test --config testing/playwright.config.ts --headed",
-    "test:ui": "npx playwright test --config testing/playwright.config.ts --ui",
-    "test:report": "npx playwright show-report testing/playwright-report"
+    "serve": "http-server -p 3000 -c-1 .",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.0",
-    "@types/node": "^25.9.2"
+    "@playwright/test": "^1.48.0",
+    "http-server": "^14.1.1"
   }
 }
