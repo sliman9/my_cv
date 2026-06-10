@@ -12,7 +12,7 @@
   "profilePhoto": "assets/photo.jpg",
   "stats": [
     { "val": "4+", "lbl": "Years Experience" },
-    { "val": "3",  "lbl": "Companies" },
+    { "val": "5",  "lbl": "Companies" },
     { "val": "15+","lbl": "Certifications" },
     { "val": "1M+","lbl": "Users Impacted" }
   ],
@@ -35,33 +35,28 @@
   ],
   "skillTabs": {
     "automation": [
-      { "n": "Robot Framework",   "p": 92 },
-      { "n": "Selenium",          "p": 90 },
-      { "n": "Playwright",        "p": 85 },
-      { "n": "CI/CD Pipelines",   "p": 82 },
-      { "n": "Page Object Model", "p": 88 },
-      { "n": "Tosca",             "p": 72 },
-      { "n": "API Testing",       "p": 78 },
-      { "n": "Visual Regression", "p": 80 }
+      { "n": "Robot Framework",   "p": 100 },
+      { "n": "Selenium",          "p": 100 },
+      { "n": "Playwright",        "p": 90 },
+      { "n": "CI/CD Pipelines",   "p": 80 },
+      { "n": "Page Object Model", "p": 100 }
     ],
     "languages": [
-      { "n": "Python",           "p": 85 },
+      { "n": "Python",           "p": 90 },
       { "n": "TypeScript",       "p": 80 },
       { "n": "Robot Framework DSL","p": 90 },
-      { "n": "SQL",              "p": 72 },
       { "n": "Bash / Shell",     "p": 70 },
-      { "n": "XML / JSON",       "p": 75 }
+      { "n": "HTML",       "p": 75 }
     ],
     "tools": [
-      { "n": "Jira",                   "p": 92 },
-      { "n": "GitHub / GitHub Actions","p": 85 },
-      { "n": "Agile / Scrum",          "p": 90 },
-      { "n": "Postman",                "p": 75 },
+      { "n": "Jira",                   "p": 100 },
+      { "n": "GitHub / GitHub Actions","p": 100 },
+      { "n": "Agile / Scrum",          "p": 100 },
       { "n": "Confluence",             "p": 80 },
-      { "n": "ITIL",                   "p": 78 }
+      { "n": "ITIL",                   "p": 90 }
     ]
   },
-  "pills": "Python, TypeScript, Robot Framework, Selenium, Playwright, GitHub Actions, CI/CD, Jira, Confluence, SQL, Postman, Tosca, SOAP/REST, XML, Bash, Cucumber, Agile/Scrum, ITIL, VS Code, Android Testing, Visual Regression, Page Object Model",
+  "pills": "Python, TypeScript, Robot Framework, Selenium, Playwright, GitHub Actions, CI/CD, Jira, Confluence, SQL, Postman, Tosca, Agile/Scrum, ITIL, VS Code, Android Testing, Visual Regression, Page Object Model",
   "hlPills": "Python, TypeScript, Robot Framework, Selenium, Playwright",
   "experience": [
     {
