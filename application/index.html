@@ -200,6 +200,10 @@ body::before {
   color: rgba(255,255,255,0.92);
   background: rgba(255,255,255,0.1);
 }
+.nav-links a.active {
+  color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.16);
+}
 
 /* Language toggle — iOS segment control */
 .lang-wrap {
@@ -659,11 +663,15 @@ body::before {
     0 0 32px rgba(10,132,255,0.08);
 }
 .svc-ico {
-  width:54px; height:54px; border-radius:var(--r-m);
-  background:linear-gradient(135deg, var(--purple), var(--purple-l));
+  width:48px; height:48px; border-radius:var(--r-m);
+  background: rgba(10,132,255,0.1);
+  border: 1px solid rgba(10,132,255,0.18);
   display:flex; align-items:center; justify-content:center;
-  font-size:1.6rem; margin-bottom:20px;
+  color: var(--purple-l);
+  margin-bottom:20px;
+  flex-shrink:0;
 }
+.svc-ico svg { width:22px; height:22px; }
 .svc-title { font-size:1.1rem; font-weight:800; margin-bottom:10px; }
 .svc-desc  { font-size:0.875rem; color:var(--tm); line-height:1.7; }
 
@@ -857,7 +865,15 @@ body::before {
   box-shadow:0 16px 48px rgba(0,0,0,0.4);
 }
 .cert-card:hover::after { opacity:1; }
-.cert-ico  { font-size:2rem; margin-bottom:12px; position:relative; z-index:1; }
+.cert-ico {
+  width:44px; height:44px; border-radius:var(--r-m);
+  background: rgba(120,120,128,0.12);
+  border: 1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 14px;
+  color: var(--tm);
+}
+.cert-ico svg { width:20px; height:20px; }
 .cert-name { font-size:0.78rem; font-weight:700; color:var(--t); line-height:1.4; position:relative; z-index:1; }
 .cert-year { font-size:0.65rem; color:var(--td); margin-top:6px; font-family:var(--fmono); position:relative; z-index:1; }
 
@@ -879,7 +895,15 @@ body::before {
   border-color:var(--bh); transform:translateY(-6px);
   box-shadow:0 12px 44px rgba(0,0,0,0.35);
 }
-.edu-ico  { font-size:2rem; margin-bottom:16px; }
+.edu-ico {
+  width:44px; height:44px; border-radius:var(--r-m);
+  background: rgba(10,132,255,0.1);
+  border: 1px solid rgba(10,132,255,0.18);
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:16px;
+  color: var(--purple-l);
+}
+.edu-ico svg { width:20px; height:20px; }
 .edu-deg  { font-size:1rem; font-weight:800; margin-bottom:6px; line-height:1.3; }
 .edu-sch  { font-size:0.875rem; font-weight:700; color:var(--purple-l); margin-bottom:4px; }
 .edu-per  { font-size:0.78rem; color:var(--tm); }
@@ -1066,7 +1090,7 @@ body::before {
   </div>
 
   <div class="scroll-hint" onclick="scrollTo(0,window.innerHeight)">
-    <span>Scroll</span>
+    <span id="scroll-hint-lbl">Scroll</span>
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
       <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -1168,6 +1192,37 @@ const ALL_LANGS = ['en','nl','es','fr','de'];
 const LANG_LABEL = {en:'EN',nl:'NL',es:'ES',fr:'FR',de:'DE'};
 
 // ═══════════════════════════════════════════════════════════════
+// SVG ICON LIBRARY  (unified line-icon style, stroke-width 1.5)
+// ═══════════════════════════════════════════════════════════════
+const ICONS = {
+  layers:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+  pipeline:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><line x1="6" y1="9" x2="6" y2="15"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="18" y1="9" x2="18" y2="15"/></svg>`,
+  shield:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,
+  chip:       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="9" y1="7" x2="9" y2="5"/><line x1="12" y1="7" x2="12" y2="5"/><line x1="15" y1="7" x2="15" y2="5"/><line x1="9" y1="17" x2="9" y2="19"/><line x1="12" y1="17" x2="12" y2="19"/><line x1="15" y1="17" x2="15" y2="19"/><line x1="7" y1="9" x2="5" y2="9"/><line x1="7" y1="12" x2="5" y2="12"/><line x1="7" y1="15" x2="5" y2="15"/><line x1="17" y1="9" x2="19" y2="9"/><line x1="17" y1="12" x2="19" y2="12"/><line x1="17" y1="15" x2="19" y2="15"/></svg>`,
+  flask:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M13 3v6l5 9H6l5-9V3"/></svg>`,
+  globe:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  cloud:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>`,
+  code:       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  gear:       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32 2.12 2.12M2 12h3m14 0h3M4.22 19.78l2.12-2.12m11.32-11.32 2.12-2.12"/></svg>`,
+  team:       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  search:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  chart:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>`,
+  api:        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="14 2 14 8 20 8"/><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>`,
+  network:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="18" width="6" height="4" rx="1"/><rect x="16" y="18" width="6" height="4" rx="1"/><line x1="12" y1="6" x2="12" y2="11"/><line x1="5" y1="18" x2="12" y2="11"/><line x1="19" y1="18" x2="12" y2="11"/></svg>`,
+  graduation: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
+  laptop:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>`,
+};
+
+// Contact icons (consistent line style)
+const IC = {
+  email:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,
+  phone:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.76 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.68 2.72h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.31a16 16 0 0 0 6.29 6.29l1.68-1.68a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+  location: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+  linkedin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+  github:   `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>`,
+};
+
+// ═══════════════════════════════════════════════════════════════
 // TRANSLATION STRINGS
 // ═══════════════════════════════════════════════════════════════
 const T = {
@@ -1195,7 +1250,13 @@ const T = {
     decoTitle:'Remote-friendly',
     decoSub: 'Based in the Netherlands, available for remote and on-site assignments across Europe',
     yr:      'yr',
-    copy:    '© 2025 Sulaiman Hashimi'
+    copy:    '© 2025 Sulaiman Hashimi',
+    ctaExp: 'View Experience',
+    ctaContact: 'Get In Touch',
+    scrollHint: 'Scroll',
+    lbl_email: 'Email',
+    lbl_phone: 'Phone',
+    lbl_location: 'Location',
   },
   nl: {
     nav:    ['Over mij','Diensten','Vaardigheden','Ervaring','Certificaten','Contact'],
@@ -1221,7 +1282,13 @@ const T = {
     decoTitle:'Remote-vriendelijk',
     decoSub: 'Gevestigd in Nederland, beschikbaar voor remote en on-site opdrachten in Europa',
     yr:      'jr',
-    copy:    '© 2025 Sulaiman Hashimi'
+    copy:    '© 2025 Sulaiman Hashimi',
+    ctaExp: 'Bekijk Ervaring',
+    ctaContact: 'Neem Contact Op',
+    scrollHint: 'Scroll',
+    lbl_email: 'E-mail',
+    lbl_phone: 'Telefoon',
+    lbl_location: 'Locatie',
   },
   es: {
     nav:    ['Sobre mí','Servicios','Habilidades','Experiencia','Certificaciones','Contacto'],
@@ -1247,7 +1314,13 @@ const T = {
     decoTitle:'Remote-friendly',
     decoSub: 'Disponible para proyectos remotos y presenciales en Europa',
     yr:      'a',
-    copy:    '© 2025 Sulaiman Hashimi'
+    copy:    '© 2025 Sulaiman Hashimi',
+    ctaExp: 'Ver Experiencia',
+    ctaContact: 'Contáctame',
+    scrollHint: 'Desplaza',
+    lbl_email: 'Correo',
+    lbl_phone: 'Teléfono',
+    lbl_location: 'Ubicación',
   },
   fr: {
     nav:    ['À propos','Services','Compétences','Expérience','Certifications','Contact'],
@@ -1273,7 +1346,13 @@ const T = {
     decoTitle:'Remote-friendly',
     decoSub: 'Basé aux Pays-Bas, disponible pour des missions remote et on-site en Europe',
     yr:      'an',
-    copy:    '© 2025 Sulaiman Hashimi'
+    copy:    '© 2025 Sulaiman Hashimi',
+    ctaExp: 'Voir l\'Expérience',
+    ctaContact: 'Me Contacter',
+    scrollHint: 'Défiler',
+    lbl_email: 'E-mail',
+    lbl_phone: 'Téléphone',
+    lbl_location: 'Localisation',
   },
   de: {
     nav:    ['Über mich','Leistungen','Fähigkeiten','Erfahrung','Zertifikate','Kontakt'],
@@ -1299,7 +1378,13 @@ const T = {
     decoTitle:'Remote-freundlich',
     decoSub: 'In den Niederlanden ansässig, verfügbar für Remote- und Vor-Ort-Einsätze in Europa',
     yr:      'J.',
-    copy:    '© 2025 Sulaiman Hashimi'
+    copy:    '© 2025 Sulaiman Hashimi',
+    ctaExp: 'Erfahrung ansehen',
+    ctaContact: 'Kontakt aufnehmen',
+    scrollHint: 'Scrollen',
+    lbl_email: 'E-Mail',
+    lbl_phone: 'Telefon',
+    lbl_location: 'Standort',
   }
 };
 
@@ -1425,14 +1510,14 @@ function renderHero() {
           <path d="M20 7l-8 8-4-4-5 5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M15 7h5v5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        View Experience
+        ${t('ctaExp')}
       </a>
       <a class="btn btn-o magnetic" href="#contact">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linejoin="round"/>
           <polyline points="22,6 12,12 2,6" stroke-linejoin="round"/>
         </svg>
-        Get In Touch
+        ${t('ctaContact')}
       </a>
     </div>
   `;
@@ -1449,6 +1534,8 @@ function renderHero() {
       ${hlp.map(p => `<span class="fpill">${p}</span>`).join('')}
     </div>
   `;
+  const sh = document.getElementById('scroll-hint-lbl');
+  if (sh) sh.textContent = t('scrollHint');
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1477,7 +1564,7 @@ function renderStats() {
   document.getElementById('stats-row').innerHTML = stats.map((s, i) =>
     `<div class="stat rv" style="transition-delay:${i*0.1}s">
       <div class="stat-n" data-raw="${s.val}">${s.val}</div>
-      <div class="stat-l">${s.lbl}</div>
+      <div class="stat-l">${(D?.i18n?.[LANG]?.statLbls?.[i]) || s.lbl}</div>
     </div>`
   ).join('');
 }
@@ -1512,7 +1599,7 @@ function renderServices() {
 
   document.getElementById('svc-grid').innerHTML = svcs.map((s,i) =>
     `<div class="svc-card rv rv-s" style="transition-delay:${i*0.12}s">
-      <div class="svc-ico">${s.icon}</div>
+      <div class="svc-ico">${ICONS[s.icon] || s.icon}</div>
       <h3 class="svc-title">${s.title}</h3>
       <p class="svc-desc">${s.desc}</p>
     </div>`
@@ -1613,7 +1700,7 @@ function renderCerts() {
   const certs = D?.certifications || [];
   document.getElementById('cert-grid').innerHTML = certs.map((c,i) =>
     `<div class="cert-card" data-ci="${i}">
-      <div class="cert-ico">${c.i||'🏅'}</div>
+      <div class="cert-ico">${ICONS[c.i] || c.i || ICONS.search}</div>
       <div class="cert-name">${c.n}</div>
       <div class="cert-year">${c.m} · ${c.y}</div>
     </div>`
@@ -1630,7 +1717,7 @@ function renderEducation() {
   const edu = D?.education || [];
   document.getElementById('edu-grid').innerHTML = edu.map((e,i) =>
     `<div class="edu-card rv" style="transition-delay:${i*0.15}s">
-      <div class="edu-ico">${e.icon||'🎓'}</div>
+      <div class="edu-ico">${ICONS[e.icon] || e.icon || ICONS.graduation}</div>
       <div class="edu-deg">${e.deg}</div>
       <div class="edu-sch">${e.sch}</div>
       <div class="edu-per">${e.per}</div>
@@ -1650,11 +1737,11 @@ function renderContact() {
   const phoneRaw = (p.phone||'').replace(/\s/g,'');
 
   const links = [
-    { cls:'em',  ico:'✉️', lbl:'Email',    val:p.email,    href:`mailto:${p.email}` },
-    { cls:'ph',  ico:'📞', lbl:'Phone',    val:p.phone,    href:`tel:${phoneRaw}` },
-    { cls:'loc', ico:'📍', lbl:'Location', val:p.location, href:mapUrl,           ext:true },
-    { cls:'li',  ico:'💼', lbl:'LinkedIn', val:'linkedin.com/in/sulaiman-hashimi', href:p.linkedin||'#', ext:true },
-    { cls:'gh',  ico:'<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="color:var(--t)"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>', lbl:'GitHub',  val:'github.com/sliman9', href:p.github||'#', ext:true }
+    { cls:'em',  ico: IC.email,    lbl: t('lbl_email'),    val:p.email,    href:`mailto:${p.email}` },
+    { cls:'ph',  ico: IC.phone,    lbl: t('lbl_phone'),    val:p.phone,    href:`tel:${phoneRaw}` },
+    { cls:'loc', ico: IC.location, lbl: t('lbl_location'), val:p.location, href:mapUrl, ext:true },
+    { cls:'li',  ico: IC.linkedin, lbl:'LinkedIn',          val:'linkedin.com/in/sulaiman-hashimi', href:p.linkedin||'#', ext:true },
+    { cls:'gh',  ico: IC.github,   lbl:'GitHub',            val:'github.com/sliman9', href:p.github||'#', ext:true }
   ].filter(l => l.val);
 
   document.getElementById('con-grid').innerHTML = `
@@ -1755,9 +1842,23 @@ function initScrollProgress() {
 // ═══════════════════════════════════════════════════════════════
 function initNavStuck() {
   const nav = document.getElementById('nav');
+  function updateActive() {
+    const ids = t('navId');
+    const top = window.scrollY + 100;
+    let cur = ids[0];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= top) cur = id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  }
   window.addEventListener('scroll', () => {
     nav.classList.toggle('stuck', window.scrollY > 60);
+    updateActive();
   }, {passive:true});
+  updateActive();
 }
 
 // ═══════════════════════════════════════════════════════════════
