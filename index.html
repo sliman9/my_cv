@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Sulaiman Hashimi — Test Automation Engineer</title>
 <meta name="description" content="Test Automation Engineer with 4+ years building scalable automation frameworks across government and enterprise environments.">
 <style>
@@ -489,6 +489,141 @@ html[data-theme="light"] .ripple{background:rgba(10,132,255,.25)}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
 }
+
+/* ============================================================
+   MOBILE — NATIVE EXPERIENCE
+   ============================================================ */
+
+/* Remove 300ms tap delay & callout on all interactive elements */
+a,button,[role="button"],[tabindex]{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Sheet positioned so close button stays inside it */
+.sheet{position:relative}
+
+/* Safe-area-aware fixed elements (no-op on desktop — env() defaults to 0) */
+.nav{top:max(18px, calc(env(safe-area-inset-top,0px) + 12px))}
+.to-top{
+  right:max(22px, calc(env(safe-area-inset-right,0px) + 22px));
+  bottom:max(22px, calc(env(safe-area-inset-bottom,0px) + 22px))
+}
+.toast{bottom:max(30px, calc(env(safe-area-inset-bottom,0px) + 30px))}
+
+/* Sheet drag-handle pill (shown only on mobile) */
+.sheet-handle{
+  display:none;width:36px;height:4px;border-radius:2px;
+  background:var(--text-3);opacity:.35;margin:0 auto 18px;
+}
+
+/* Bottom navigation bar (hidden on desktop) */
+.bottom-nav{display:none}
+
+/* ---- PHONE-SPECIFIC (≤640px) ---- */
+@media (max-width:640px){
+
+  /* Tighter section vertical rhythm */
+  section{padding:64px 0}
+  .stats{padding:0 0 12px}
+  .stats-grid{gap:12px}
+  .stat{padding:22px 12px}
+  .marquee-wrap{padding:40px 0 0}
+
+  /* Hero */
+  .hero{padding:max(100px, calc(env(safe-area-inset-top,0px) + 88px)) 20px 72px}
+  .hero .intro{font-size:.97rem;margin:14px auto 24px}
+  .cta-row{gap:10px}
+  .btn{padding:13px 24px;font-size:.92rem}
+  .hero-chips{margin-top:24px;gap:8px}
+  .chip{padding:8px 16px;font-size:.82rem}
+  .scroll-hint{display:none}
+
+  /* Section headers */
+  .sec-head{margin-bottom:36px}
+  .sec-head h2{font-size:clamp(1.7rem,7.5vw,2.5rem);margin:10px 0 8px}
+  .sec-head p{font-size:.95rem}
+
+  /* Skills tabs — horizontally scrollable */
+  .tabs{
+    display:flex;overflow-x:auto;width:auto;max-width:calc(100vw - 48px);
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding:5px;gap:2px;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{scroll-snap-align:start;white-space:nowrap;flex-shrink:0}
+
+  /* Timeline */
+  .timeline{padding:0 4px}
+  .tl-item{padding:0 0 26px 36px}
+  .tl-card{padding:18px 16px}
+  .tl-card h3{font-size:1.08rem}
+  .tl-card p{font-size:.9rem}
+  .tl-meta{gap:8px;margin-bottom:4px}
+  .tag{font-size:.7rem;padding:4px 10px}
+  .tags{gap:6px}
+
+  /* Footer */
+  .foot{flex-direction:column;text-align:center;gap:10px;padding:18px 16px}
+  .foot .flinks{justify-content:center}
+  footer{padding-bottom:calc(58px + env(safe-area-inset-bottom,0px) + 24px)}
+
+  /* Toast & back-to-top clear the bottom nav */
+  .toast{bottom:calc(58px + env(safe-area-inset-bottom,0px) + 14px)}
+  .to-top{bottom:calc(58px + env(safe-area-inset-bottom,0px) + 12px)}
+
+  /* Bottom sheet — slides up from bottom */
+  .sheet-overlay{align-items:flex-end;padding:0}
+  .sheet{
+    max-width:100%;width:100%;
+    border-radius:var(--r-lg) var(--r-lg) 0 0;
+    padding:12px 22px calc(32px + env(safe-area-inset-bottom,0px));
+    transform:translateY(100%);
+    transition:transform .45s var(--ease);
+    max-height:88vh;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+  .sheet-overlay.open .sheet{transform:translateY(0)}
+  .sheet-handle{display:block}
+  .sheet-close{top:0;right:0}
+
+  /* Hide hamburger — bottom nav replaces it */
+  .menu-btn{display:none!important}
+
+  /* Bottom navigation bar */
+  .bottom-nav{
+    display:flex;
+    position:fixed;bottom:0;left:0;right:0;z-index:1000;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    background:var(--glass-strong);
+    -webkit-backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+    backdrop-filter:blur(var(--blur)) saturate(var(--sat));
+    border-top:1px solid var(--border);
+    box-shadow:0 -4px 24px rgba(0,0,0,.12), inset 0 1px 0 var(--border-hi);
+  }
+  .bn-item{
+    flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+    padding:9px 4px 8px;
+    color:var(--text-3);font-size:.64rem;font-weight:600;
+    letter-spacing:.03em;text-transform:uppercase;
+    touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+    user-select:none;-webkit-user-select:none;
+    transition:color .25s ease,transform .2s var(--ease);
+    position:relative;
+  }
+  .bn-item svg{
+    width:22px;height:22px;fill:none;
+    stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  }
+  .bn-item.active{color:var(--blue)}
+  .bn-item.active::before{
+    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:28px;height:2px;background:var(--blue);border-radius:0 0 2px 2px;
+  }
+  .bn-item:active{transform:scale(.86)}
+}
 </style>
 </head>
 <body>
@@ -776,6 +911,7 @@ html[data-theme="light"] .ripple{background:rgba(10,132,255,.25)}
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 <div class="sheet-overlay" id="sheetOverlay">
   <div class="sheet glass" role="dialog" aria-modal="true" id="sheet">
+    <div class="sheet-handle" aria-hidden="true"></div>
     <button class="icon-btn sheet-close" id="sheetClose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
@@ -793,6 +929,30 @@ html[data-theme="light"] .ripple{background:rgba(10,132,255,.25)}
 <button class="to-top" id="toTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
+
+<!-- BOTTOM NAV (mobile only — CSS hides on desktop) -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation">
+  <a class="bn-item active" href="#hero">
+    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>About</span>
+  </a>
+  <a class="bn-item" href="#services">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span>Services</span>
+  </a>
+  <a class="bn-item" href="#skills">
+    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    <span>Skills</span>
+  </a>
+  <a class="bn-item" href="#experience">
+    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+    <span>Work</span>
+  </a>
+  <a class="bn-item" href="#contact">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+    <span>Contact</span>
+  </a>
+</nav>
 
 <script>
 (function(){
@@ -1000,11 +1160,15 @@ document.querySelectorAll(".num").forEach(function(el){ cntObs.observe(el); });
 /* ---------- ACTIVE NAV LINK ---------- */
 var sections = ["hero","services","skills","experience","certifications","contact"];
 var navAs = document.querySelectorAll(".nav-links a");
+var bnItems = document.querySelectorAll(".bn-item");
 var secObs = new IntersectionObserver(function(entries){
   entries.forEach(function(en){
     if(en.isIntersecting){
       var id = en.target.id;
       navAs.forEach(function(a){
+        a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+      });
+      bnItems.forEach(function(a){
         a.classList.toggle("active", a.getAttribute("href") === "#" + id);
       });
     }
@@ -1227,6 +1391,17 @@ document.getElementById("sheetClose").addEventListener("click", closeSheet);
 overlay.addEventListener("click", function(e){ if(e.target === overlay) closeSheet(); });
 document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeSheet(); });
 document.getElementById("sheetCta").addEventListener("click", closeSheet);
+
+/* ---------- SWIPE-TO-CLOSE SHEET (mobile) ---------- */
+var sheetEl = document.getElementById("sheet");
+var swipeStartY = 0;
+sheetEl.addEventListener("touchstart", function(e){
+  swipeStartY = e.touches[0].clientY;
+},{passive:true});
+sheetEl.addEventListener("touchend", function(e){
+  var diff = e.changedTouches[0].clientY - swipeStartY;
+  if(diff > 100 && sheetEl.scrollTop === 0) closeSheet();
+},{passive:true});
 
 /* ---------- COPY CONTACT ---------- */
 function copyText(txt, msg){
